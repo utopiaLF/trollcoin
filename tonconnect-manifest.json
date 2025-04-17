@@ -1,0 +1,7 @@
+{
+    "url": "http://127.0.0.1:5500",
+    "name": "My TMA Wallet App",
+    "iconUrl": "http://127.0.0.1:5500/icon.png",
+    "termsOfUseUrl": "http://127.0.0.1:5500/terms.html",
+    "privacyPolicyUrl": "http://127.0.0.1:5500/privacy.html"
+}  

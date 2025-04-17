@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Bebas+Neue&family=Orbitron:wght@400..900&family=Syncopate:wght@400;700&family=Tilt+Neon&display=swap');
+body{
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(140deg,black, #121212, #2E2E2E);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.top{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.top div{
+    width: max-content;
+    background-color: #212121;
+    padding: 0px 30px;
+    border-radius: 8px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.top div:nth-child(2){
+    background: linear-gradient(135deg, #2E4C9E, #4A71D3);
+}
+.top div p{
+    font-size: 1rem;
+    font-family: "Tilt Neon", sans-serif;
+}
+.main h1{
+    color: #CFAF77;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2rem;
+    transform: translateY(-40px);
+    /* background-color: #212121; */
+    border-radius: 30px;
+    padding: 5px;
+    z-index: 10;
+    font-family: "Audiowide", sans-serif;
+    transition: all 0.4s;
+}
+.main h1.active{
+    text-shadow: 0px 0px 30px #CFAF77;
+    animation: animeCount 3s ease infinite;
+}
+@keyframes animeCount{
+    50%{
+        transform: translateY(-55px);
+    }
+}
+.main .coin{
+    width: 230px;
+    height: 230px;
+    background-color: #2E2E2E;
+    border-radius: 50%;
+    border: 10px solid #474747;
+    /* box-shadow: inset 6px 10px 80px black,
+    inset -6px -10px 10px rgb(50, 50, 50),
+    2px 2px 10px rgb(86, 86, 86); */
+    box-shadow: inset 6px 6px 20px black,
+    inset -6px -6px 20px black,
+    6px 6px 10px 1px #363636,
+    -6px -6px 30px #2E2E2E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.5s ease;
+    margin-bottom: 50px;
+    position: relative;
+}
+.main .coin::before{
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    content: '';
+    background-color: transparent;
+    border-radius: 50%;
+}
+.main .coin img{
+    width: 150px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+.main .coin img.active{
+    opacity: 1;
+    /* animation: animeTroll 0.8s infinite; */
+    /* transform-origin: center; */
+    transform: scale(1.1);
+}
+/* @keyframes animeTroll{
+    25%{
+        transform: translateX(2px);
+    }
+    50%{
+        transform: translate(3px, 3px);
+    }
+    75%{
+        transform: translateX(-2px);
+    }
+    100%{
+
+    }
+} */
+.main .coin:active{
+    transform: scale(0.95);
+}
+.main .coin.active{
+    border-color: white;
+    box-shadow: inset 0px 0px 10px white, 0px 0px 40px white;
+}
+
+.xtap{
+    width: 100%;
+    height: max-content;
+    position: fixed;
+    left: 0;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 5px;
+    box-sizing: border-box;
+}
+.xtap div{
+    background-color: #474747;
+    padding: 0px 30px;
+    border-radius: 8px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+/* .guruBox{
+    position: absolute;
+    height: 70%;
+    width: 100%;
+    background-color: #121212;
+    top: 0%;
+    left: 0%;
+    transform: translate(0%, 50%);
+} */
+
+.menu{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #2E2E2E;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.menu div{
+    width: 50px;
+    height: 50px;
+    background-color: #212121;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-5px);
+    border-radius: 8px;
+    padding: 0px 10px;
+}
+.menu div:nth-child(2){
+    transform: translateY(-15px);
+}
+.menu div p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.coinEffect{
+    color: white;
+    z-index: 10;
+    font-size: 2rem;
+    animation: moveUp 1s forwards, fadeOut 1s 0.3s ease forwards;
+    position: absolute;
+    font-family: "Audiowide", sans-serif;
+}
+@keyframes moveUp{
+    from{
+        opacity: 0;
+        transform: scale(0);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1) translateY(-180px);
+    }
+}
+
+@keyframes fadeOut{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}

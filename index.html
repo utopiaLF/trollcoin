@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <script async src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="top">
+            <div>
+                <p>Level: Brokie</p>
+            </div>
+
+            <div>
+                <p><i class="fa-solid fa-wallet"></i> TON Wallet</p>
+            </div>
+        </div>
+        
+        <h1 id="h1">0</h1>
+
+        <div class="coin" id="coin">
+            <!-- <img src="troll-face-png-picture.png" id="trollface" alt="Trollface pic"> -->
+        </div>
+
+        <div class="xtap">
+            <div>
+                <p>100/100</p>
+            </div>
+            <div class="guru" id="guru">
+                <p><i class="fa-solid fa-fire"></i></p>
+            </div>
+            
+        </div>
+
+        <div class="guruBox"></div>
+
+        <div class="menu">
+            <div>
+                <p><i class="fa-solid fa-list-check"></i></p>
+            </div>
+            <div>
+                <p><i class="fa-solid fa-house"></i></p>
+            </div>
+            <div>
+                <p><i class="fa-solid fa-user"></i></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Telegram.WebApp.ready()
+        // Telegram.WebApp.expand()
+
+        let coins = localStorage.getItem('coins')
+        let h1 = document.getElementById('h1')
+        let count = 0
+        count = Math.floor(coins * 0.8)
+        
+        if(!coins) {
+            localStorage.setItem('coins', 0)
+            document.getElementById('h1').innerText = coins
+        } else {
+            //counting animation
+            let interval = setInterval(()=>{
+                count++
+                h1.textContent = count
+
+                if(count >= coins){
+                    clearInterval(interval)
+                }
+            }, 1)
+        }
+
+        document.getElementById('coin').addEventListener("click", (e)=>{
+            coins++
+            
+            localStorage.setItem('coins', coins)
+
+            document.getElementById('h1').innerText = coins
+
+            //effects
+            const coinBox = document.getElementById('coin')
+            const coinEffect = document.createElement('div')
+            coinEffect.classList.add('coinEffect')
+            coinEffect.textContent = '1'
+
+            const rect = coinBox.getBoundingClientRect()
+            const x = event.clientX - rect.left
+            const y = event.clientY - rect.top
+
+            coinEffect.style.top = `${y}px`
+            coinEffect.style.left = `${x}px`
+            
+            coinBox.appendChild(coinEffect)
+        
+            setTimeout(()=>{
+                coinEffect.remove()
+            }, 2000)
+        })
+
+        let interval = null
+
+        function startCount(){
+            
+            setTimeout(()=>{
+                h1.classList.add('active')
+                document.getElementById('trollface').classList.add('active')
+                document.getElementById('coin').classList.add('active')
+                navigator.vibrate(500)
+    
+                interval = setInterval(()=>{
+                    count++
+                    h1.textContent = count
+                    localStorage.setItem('coins', count)        
+            }, 100)
+            }, 2000)
+        }
+
+        document.getElementById('coin').addEventListener("touchstart", startCount)
+
+        function stop(){
+            clearInterval(interval)
+            h1.classList.remove('active')
+            document.getElementById('trollface').classList.remove('active')
+            document.getElementById('coin').classList.remove('active')
+        }
+
+        document.getElementById('coin').addEventListener("touchend", stop)
+        document.getElementById('coin').addEventListener("touchcancel", stop)
+        document.getElementById('coin').addEventListener("mouseover", stop)
+    </script>
+</body>
+</html>
