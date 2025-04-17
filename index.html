@@ -175,9 +175,12 @@
 
         //profile
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-            manifestUrl: 'http://127.0.0.1:5500/tonconnect-manifest.json',
+            manifestUrl: 'https://utopialf.github.io/trollcoin/tonconnect-manifest.json',
             buttonRootId: 'ton-connect'
         });
+        tonConnectUI.uiOptions = {
+            twaReturnUrl: 'https://t.me/trollcoin_test_bot'
+        };
         // async function connectToWallet() {
         //     const connectedWallet = await tonConnectUI.connectWallet();
         //     // Do something with connectedWallet if needed

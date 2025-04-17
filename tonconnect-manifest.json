@@ -1,7 +1,7 @@
 {
-    "url": "http://127.0.0.1:5500",
-    "name": "My TMA Wallet App",
-    "iconUrl": "http://127.0.0.1:5500/icon.png",
-    "termsOfUseUrl": "http://127.0.0.1:5500/terms.html",
-    "privacyPolicyUrl": "http://127.0.0.1:5500/privacy.html"
+    "url": "https://utopialf.github.io/trollcoin",
+    "name": "Trollcoin Mini App",
+    "iconUrl": "https://utopialf.github.io/trollcoin/troll-face-png-picture.png",
+    "termsOfUseUrl": "https://utopialf.github.io/trollcoin/terms.html",
+    "privacyPolicyUrl": "https://utopialf.github.io/trollcoin/privacy.html"
 }  
