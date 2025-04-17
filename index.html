@@ -21,28 +21,33 @@
     <div class="main" id="main">
         <div class="top">
             <div>
-                <p>Level: Null</p>
+                <p>Level</p>
+            </div>
+
+            <div>
+                <p><i class="fas fa-cog"></i> <!-- Cog icon -->
+                </p>
             </div>
         </div>
         
         <h1 id="h1">0</h1>
 
         <div class="coin" id="coin">
-            <!-- <img src="troll-face-png-picture.png" id="trollface" alt="Trollface pic"> -->
-             <p style="color: grey;">Tap or just hold</p>
+            <img src="troll-face-78-1.png" id="trollface" alt="Trollface pic">
+             <!-- <p style="color: grey;">Tap or just hold</p> -->
         </div>
 
         <div class="xtap">
-            <div>
+            <!-- <div>
                 <p>100/100</p>
             </div>
             <div class="guru" id="guru">
                 <p><i class="fa-solid fa-fire"></i></p>
-            </div>
+            </div> -->
             
         </div>
 
-        <div class="guruBox"></div>
+        <!-- <div class="guruBox"></div> -->
 
     </div>
     
@@ -158,7 +163,7 @@
             }, 2000)
         }
 
-        document.getElementById('coin').addEventListener("touchstart", startCount)
+        // document.getElementById('coin').addEventListener("touchstart", startCount)
 
         function stop(){
             clearInterval(interval)
@@ -167,10 +172,10 @@
             document.getElementById('coin').classList.remove('active')
         }
 
-        document.getElementById('coin').addEventListener("touchend", stop)
-        document.getElementById('coin').addEventListener("touchcancel", stop)
-        document.getElementById('coin').addEventListener("touchmove", stop)
-        document.getElementById('coin').addEventListener("mouseover", stop)
+        // document.getElementById('coin').addEventListener("touchend", stop)
+        // document.getElementById('coin').addEventListener("touchcancel", stop)
+        // document.getElementById('coin').addEventListener("touchmove", stop)
+        // document.getElementById('coin').addEventListener("mouseover", stop)
 
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://utopialf.github.io/trollcoin/tonconnect-manifest.json',

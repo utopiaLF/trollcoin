@@ -49,9 +49,7 @@ body{
     display: flex;
     align-items: center;
 }
-.top div:nth-child(2){
-    background: linear-gradient(135deg, #2E4C9E, #4A71D3);
-}
+
 .top div p{
     font-size: 1rem;
     font-family: "Tilt Neon", sans-serif;
@@ -107,7 +105,7 @@ body{
     border-radius: 50%;
 }
 .main .coin img{
-    width: 150px;
+    width: 130px;
     opacity: 0.8;
     transition: all 0.3s ease;
 }
@@ -222,6 +220,7 @@ body{
     font-family: "Audiowide", sans-serif;
     font-size: 1.8rem;
     margin-bottom: 40px;
+    text-align: center;
 }
 @keyframes moveUp{
     from{
