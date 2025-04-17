@@ -2,7 +2,7 @@
 body{
     padding: 0;
     margin: 0;
-    background: linear-gradient(140deg,black, #121212, #2E2E2E);
+    background-color: black;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -12,6 +12,23 @@ body{
     height: 100vh;
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
+}
+.tasks{
+    width: 100%;
+    height: 100vh;
+    display: none;
+}
+.tasks div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.tasks div h1{
+    font-family: 'VT323', monospace;
+    text-align: center;
 }
 .top{
     position: fixed;
@@ -164,18 +181,14 @@ body{
     justify-content: space-around;
 }
 .menu div{
-    width: 50px;
+    width: 20%;
     height: 50px;
     background-color: #212121;
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translateY(-5px);
-    border-radius: 8px;
-    padding: 0px 10px;
-}
-.menu div:nth-child(2){
-    transform: translateY(-15px);
+    border-radius: 5px;
+    padding: 0px 5px;
 }
 .menu div p{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -188,6 +201,27 @@ body{
     animation: moveUp 1s forwards, fadeOut 1s 0.3s ease forwards;
     position: absolute;
     font-family: "Audiowide", sans-serif;
+}
+
+.profile{
+    width: 100%;
+    height: 100vh;
+    display: none;
+}
+.profile .walletBox{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 30px;
+    box-sizing: border-box; */
+}
+.profile .walletBox h1{
+    font-family: "Audiowide", sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 40px;
 }
 @keyframes moveUp{
     from{
@@ -207,4 +241,22 @@ body{
     to{
         opacity: 0;
     }
+}
+
+.tasks-btn.active{
+    background-color: white;
+    color: black;
+}
+.main-btn.active{
+    background-color: white;
+    color: black;
+}
+.profile-btn.active{
+    background-color: white;
+    color: black;
+}
+
+.main-btn.one{
+    background-color: white;
+    color: black;
 }

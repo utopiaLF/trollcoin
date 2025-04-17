@@ -6,17 +6,23 @@
         <link rel="stylesheet" href="style.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
         <script async src="https://telegram.org/js/telegram-web-app.js"></script>
+        <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
     <title>Document</title>
 </head>
 <body>
-    <div class="main">
+    <div id="tasks" class="tasks">
+        <div>
+            <img src="https://i.gifer.com/5Mz4.gif" width="150" alt="Fire gif">
+            <h1>This page is under development. Dev is cooking...</h1>
+        </div>
+    </div>
+
+    <div class="main" id="main">
         <div class="top">
             <div>
-                <p>Level: Brokie</p>
-            </div>
-
-            <div>
-                <p><i class="fa-solid fa-wallet"></i> TON Wallet</p>
+                <p>Level: Null</p>
             </div>
         </div>
         
@@ -24,6 +30,7 @@
 
         <div class="coin" id="coin">
             <!-- <img src="troll-face-png-picture.png" id="trollface" alt="Trollface pic"> -->
+             <p style="color: grey;">Tap or just hold</p>
         </div>
 
         <div class="xtap">
@@ -38,22 +45,62 @@
 
         <div class="guruBox"></div>
 
-        <div class="menu">
-            <div>
-                <p><i class="fa-solid fa-list-check"></i></p>
-            </div>
-            <div>
-                <p><i class="fa-solid fa-house"></i></p>
-            </div>
-            <div>
-                <p><i class="fa-solid fa-user"></i></p>
-            </div>
+    </div>
+    
+    <div class="profile" id="profile">
+        <div class="walletBox">
+            <h1>CONNECT TON WALLET</h1>
+
+            <div id="ton-connect"></div>
+        </div>
+    </div>
+
+    <div class="menu">
+        <div id="tasks-btn" class="tasks-btn">
+            <p><i class="fa-solid fa-list-check"></i></p>
+        </div>
+        <div id="main-btn" class="main-btn">
+            <p><i class="fa-solid fa-house"></i></p>
+        </div>
+        <div id="profile-btn" class="profile-btn">
+            <p><i class="fa-solid fa-user"></i></p>
         </div>
     </div>
 
     <script>
-        // Telegram.WebApp.ready()
-        // Telegram.WebApp.expand()
+        document.getElementById('main-btn').classList.add('one')
+        
+        document.getElementById('profile-btn').addEventListener('click', ()=>{
+            document.getElementById('tasks').style.display = 'none'
+            document.getElementById('main').style.display = 'none'
+            document.getElementById('profile').style.display = 'block'
+            
+            document.getElementById('profile-btn').classList.add('active');
+            document.getElementById('main-btn').classList.remove('active');
+            document.getElementById('main-btn').classList.remove('one')
+            document.getElementById('tasks-btn').classList.remove('active');
+        })
+        
+        document.getElementById('main-btn').addEventListener('click', ()=>{
+            document.getElementById('tasks').style.display = 'none'
+            document.getElementById('main').style.display = 'block'
+            document.getElementById('profile').style.display = 'none'
+            
+            document.getElementById('main-btn').classList.add('active');
+            document.getElementById('profile-btn').classList.remove('active');
+            document.getElementById('tasks-btn').classList.remove('active');
+        })
+        
+        document.getElementById('tasks-btn').addEventListener('click', ()=>{
+            document.getElementById('tasks').style.display = 'block'
+            document.getElementById('main').style.display = 'none'
+            document.getElementById('profile').style.display = 'none'
+            
+            document.getElementById('tasks-btn').classList.add('active');
+            document.getElementById('profile-btn').classList.remove('active');
+            document.getElementById('main-btn').classList.remove('active');
+            document.getElementById('main-btn').classList.remove('one')
+        })
 
         let coins = localStorage.getItem('coins')
         let h1 = document.getElementById('h1')
@@ -64,15 +111,7 @@
             localStorage.setItem('coins', 0)
             document.getElementById('h1').innerText = coins
         } else {
-            //counting animation
-            let interval = setInterval(()=>{
-                count++
-                h1.textContent = count
-
-                if(count >= coins){
-                    clearInterval(interval)
-                }
-            }, 1)
+            h1.textContent = coins
         }
 
         document.getElementById('coin').addEventListener("click", (e)=>{
@@ -131,7 +170,24 @@
 
         document.getElementById('coin').addEventListener("touchend", stop)
         document.getElementById('coin').addEventListener("touchcancel", stop)
+        document.getElementById('coin').addEventListener("touchmove", stop)
         document.getElementById('coin').addEventListener("mouseover", stop)
+
+        //profile
+        const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+            manifestUrl: 'http://127.0.0.1:5500/tonconnect-manifest.json',
+            buttonRootId: 'ton-connect'
+        });
+        // async function connectToWallet() {
+        //     const connectedWallet = await tonConnectUI.connectWallet();
+        //     // Do something with connectedWallet if needed
+        //     console.log(connectedWallet);
+        // }
+
+        // // Call the function
+        // connectToWallet().catch(error => {
+        //     console.error("Error connecting to wallet:", error);
+        // });
     </script>
 </body>
 </html>
