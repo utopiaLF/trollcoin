@@ -5,10 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" href="style.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-        <script async src="https://telegram.org/js/telegram-web-app.js"></script>
-        <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+        <!-- <script async src="https://telegram.org/js/telegram-web-app.js"></script> -->
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-
+        <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -147,7 +146,7 @@
             
             setTimeout(()=>{
                 h1.classList.add('active')
-                document.getElementById('trollface').classList.add('active')
+                // document.getElementById('trollface').classList.add('active')
                 document.getElementById('coin').classList.add('active')
                 navigator.vibrate(500)
     
@@ -164,7 +163,7 @@
         function stop(){
             clearInterval(interval)
             h1.classList.remove('active')
-            document.getElementById('trollface').classList.remove('active')
+            // document.getElementById('trollface').classList.remove('active')
             document.getElementById('coin').classList.remove('active')
         }
 
@@ -173,14 +172,15 @@
         document.getElementById('coin').addEventListener("touchmove", stop)
         document.getElementById('coin').addEventListener("mouseover", stop)
 
-        //profile
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://utopialf.github.io/trollcoin/tonconnect-manifest.json',
             buttonRootId: 'ton-connect'
         });
+
         tonConnectUI.uiOptions = {
             twaReturnUrl: 'https://t.me/trollcoin_test_bot'
         };
+
         // async function connectToWallet() {
         //     const connectedWallet = await tonConnectUI.connectWallet();
         //     // Do something with connectedWallet if needed
