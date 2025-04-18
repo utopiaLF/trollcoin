@@ -16,9 +16,46 @@ body{
 .tasks{
     width: 100%;
     height: 100vh;
+    display: flex;
+    /* display: none; */
+}
+.taskBox{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.taskBox .task{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #2E2E2E;
+    height: 60px;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.taskBox .task p{
+    font-family: "Tilt Neon", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.taskBox .task button{
+    padding: 5px 20px;
+    /* font-size: 1rem; */
+    border: none;
+    outline: none;
+    background-color: white;
+    border-radius: 5px;
+}
+.main{
     display: none;
 }
-.tasks div{
+/* .tasks div{
     width: 100%;
     height: 100%;
     display: flex;
@@ -29,7 +66,7 @@ body{
 .tasks div h1{
     font-family: 'VT323', monospace;
     text-align: center;
-}
+} */
 .top{
     position: fixed;
     top: 0;

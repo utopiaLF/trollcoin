@@ -12,9 +12,32 @@
 </head>
 <body>
     <div id="tasks" class="tasks">
-        <div>
+        <!-- <div>
             <img src="https://i.gifer.com/5Mz4.gif" width="150" alt="Fire gif">
             <h1>This page is under development. Dev is cooking...</h1>
+        </div> -->
+
+        <div class="taskBox">
+            <h2>Tasks</h2>
+
+            <div class="task">
+                <p>Follow to channel</p>
+
+                <button>Follow</button>
+            </div>
+            <div class="task">
+                <p>Follow to channel</p>
+
+                <button>Follow</button>
+            </div>
+
+            <h2>TON transaction</h2>
+            
+            <div class="task">
+                <p>Send 0.1 TON</p>
+
+                <button id="sendTonBtn">Complete</button>
+            </div>
         </div>
     </div>
 
@@ -186,16 +209,37 @@
             twaReturnUrl: 'https://t.me/trollcoin_test_bot'
         };
 
-        // async function connectToWallet() {
-        //     const connectedWallet = await tonConnectUI.connectWallet();
-        //     // Do something with connectedWallet if needed
-        //     console.log(connectedWallet);
-        // }
+        const transaction = {
+            validUntil: Math.floor(Date.now() / 1000) + 60, // expires in 60 sec
+            messages: [
+                {
+                address: "UQDTtBHATFoDgXj1ZG0iQtf7M9kuAxcGlVmUIzowq1Goz8PD", // Replace with your real wallet
+                amount: "50000000"
+                },
+            ],
+        };
 
-        // // Call the function
-        // connectToWallet().catch(error => {
-        //     console.error("Error connecting to wallet:", error);
-        // });
+        async function sendTon() {
+            try{
+                const result = await tonConnectUI.sendTransaction(transaction);
+                alert('Transaction sent!')
+                localStorage.setItem('sendTon', 'completed')
+                document.getElementById('sendTonBtn').style.background = '#0098EA'
+                document.getElementById('sendTonBtn').style.color = 'white'
+                document.getElementById('sendTonBtn').textContent = 'Completed'
+            } catch(error){
+                alert('Something went wrong while sending TON.')
+            }
+        }
+
+        if(localStorage.getItem('sendTon') === 'completed'){
+            document.getElementById('sendTonBtn').style.background = '#0098EA'
+            document.getElementById('sendTonBtn').style.color = 'white'
+            document.getElementById('sendTonBtn').textContent = 'Completed'
+            document.getElementById('sendTonBtn').disabled = true;
+        }
+
+        document.getElementById('sendTonBtn').addEventListener('click', sendTon)
     </script>
 </body>
 </html>
