@@ -18,23 +18,32 @@
         </div> -->
 
         <div class="taskBox">
-            <h2>Tasks</h2>
+            <h2>Follow channels</h2>
 
             <div class="task">
                 <p>Follow to channel</p>
 
-                <button>Follow</button>
+                <button class="followBtn" id="followBtn">Follow</button>
             </div>
             <div class="task">
                 <p>Follow to channel</p>
 
-                <button>Follow</button>
+                <button class="followBtn" id="followBtn">Follow</button>
+            </div>
+
+            <h2>Invite others</h2>
+            <div class="task">
+                <p>Invite your friends</p>
+
+                <span>
+                    <button id="share">Copy Link</button>
+                    <button id="share">Share</button>
+                </span>
             </div>
 
             <h2>TON transaction</h2>
-            
             <div class="task">
-                <p>Send 0.05 TON</p>
+                <p>Send 0.05 TON (and earn +1mln coins)</p>
 
                 <button id="sendTonBtn">Complete</button>
             </div>
@@ -129,7 +138,7 @@
             document.getElementById('main-btn').classList.remove('one')
         })
 
-        let coins = localStorage.getItem('coins')
+        let coins = Number(localStorage.getItem('coins'))
         let h1 = document.getElementById('h1')
         let count = 0
         count = Math.floor(coins * 0.8)
@@ -138,7 +147,7 @@
             localStorage.setItem('coins', 0)
             document.getElementById('h1').innerText = coins
         } else {
-            h1.textContent = coins
+            h1.textContent = (coins).toLocaleString('en-US')
         }
 
         document.getElementById('coin').addEventListener("click", (e)=>{
@@ -146,7 +155,7 @@
             
             localStorage.setItem('coins', coins)
 
-            document.getElementById('h1').innerText = coins
+            h1.textContent = (coins).toLocaleString('en-US')
 
             //effects
             const coinBox = document.getElementById('coin')
@@ -227,6 +236,9 @@
                 document.getElementById('sendTonBtn').style.background = '#0098EA'
                 document.getElementById('sendTonBtn').style.color = 'white'
                 document.getElementById('sendTonBtn').textContent = 'Completed'
+
+                coins += 1000000;
+                localStorage.setItem('coins', coins)
             } catch(error){
                 alert('Something went wrong while sending TON.')
             }
@@ -240,6 +252,16 @@
         }
 
         document.getElementById('sendTonBtn').addEventListener('click', sendTon)
+
+        const channels = ['@durov', '@notcoin'];
+
+        let followBtn = document.getElementsByClassName('followBtn');
+
+        for (let i = 0; i < followBtn.length; i++) {
+            followBtn[i].addEventListener('click', ()=>{
+                window.location.href = channels[i]
+            })
+        }
     </script>
 </body>
 </html>
