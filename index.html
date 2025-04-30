@@ -11,95 +11,118 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="tasks" class="tasks">
-        <!-- <div>
-            <img src="https://i.gifer.com/5Mz4.gif" width="150" alt="Fire gif">
-            <h1>This page is under development. Dev is cooking...</h1>
-        </div> -->
+    <div class="warning">
+        <h1>Mini App only works for mobile devices</h1>
 
-        <div class="taskBox">
-            <h2>Follow channels</h2>
-
-            <div class="task">
-                <p>Follow to channel</p>
-
-                <button class="followBtn" id="followBtn">Follow</button>
-            </div>
-            <div class="task">
-                <p>Follow to channel</p>
-
-                <button class="followBtn" id="followBtn">Follow</button>
-            </div>
-
-            <h2>Invite others</h2>
-            <div class="task">
-                <p>Invite your friends</p>
-
-                <span>
-                    <button id="share">Copy Link</button>
-                    <button id="share">Share</button>
-                </span>
-            </div>
-
-            <h2>TON transaction</h2>
-            <div class="task">
-                <p>Send 0.05 TON (and earn +1mln coins)</p>
-
-                <button id="sendTonBtn">Complete</button>
-            </div>
-        </div>
+        <a href="https://t.me/trollcoin_test_bot">Open Telegram Mini-App</a>
     </div>
 
-    <div class="main" id="main">
-        <div class="top">
-            <div>
-                <p>Level</p>
+    <div class="content">
+        <div id="tasks" class="tasks">
+            <!-- <div>
+                <img src="https://i.gifer.com/5Mz4.gif" width="150" alt="Fire gif">
+                <h1>This page is under development. Dev is cooking...</h1>
+            </div> -->
+    
+            <div class="taskBox">
+                <h2>Daily tasks</h2>
+    
+                <div class="task">
+                    <p>Daily check-in</p>
+    
+                    <button class="followBtn" id="claim">Claim</button>
+                </div>
+                <!-- <h2>Follow channels</h2>
+    
+                <div class="task">
+                    <p>Follow to channel</p>
+    
+                    <button class="followBtn" id="followBtn">Follow</button>
+                </div>
+                <div class="task">
+                    <p>Follow to channel</p>
+    
+                    <button class="followBtn" id="followBtn">Follow</button>
+                </div> -->
+    
+                <h2>Invite others</h2>
+                <div class="task">
+                    <p>Invite your friends</p>
+    
+                    <span>
+                        <button id="share">Copy Link</button>
+                        <button id="share">Share</button>
+                    </span>
+                </div>
+    
+                <h2>TON transaction</h2>
+                <div class="task">
+                    <p>Send 0.05 TON (and earn +1mln coins)</p>
+    
+                    <button id="sendTonBtn">Complete</button>
+                </div>
             </div>
-
-            <div>
-                <p><i class="fas fa-cog"></i> <!-- Cog icon -->
-                </p>
+        </div>
+    
+        <div class="main" id="main">
+            <div class="top">
+                <div>
+                    <p id="level">Level</p>
+                </div>
+    
+                <div class="settingBtn" id="settingBtn">
+                    <p><i class="fas fa-cog"></i></p>
+                </div>
+            </div>
+            
+            <h1 id="h1">0</h1>
+    
+            <div class="coin" id="coin">
+                 <!-- <p style="color: grey;">Tap or just hold</p> -->
+            </div>
+    
+            <div class="xtap">
+                <!-- <div>
+                    <p>100/100</p>
+                </div>
+                <div class="guru" id="guru">
+                    <p><i class="fa-solid fa-fire"></i></p>
+                </div> -->
+                
+            </div>
+    
+            <!-- <div class="guruBox"></div> -->
+    
+        </div>
+        <div class="setting" id="setting">
+            <div class="sinfo">
+                <img src="https://i.gifer.com/5Mz4.gif" width="150" alt="Fire gif">
+                <h1>This page is under development. Dev is cooking...</h1>
             </div>
         </div>
         
-        <h1 id="h1">0</h1>
-
-        <div class="coin" id="coin">
-            <img src="troll-face-78-1.png" id="trollface" alt="Trollface pic">
-             <!-- <p style="color: grey;">Tap or just hold</p> -->
-        </div>
-
-        <div class="xtap">
-            <!-- <div>
-                <p>100/100</p>
-            </div>
-            <div class="guru" id="guru">
-                <p><i class="fa-solid fa-fire"></i></p>
-            </div> -->
-            
-        </div>
-
-        <!-- <div class="guruBox"></div> -->
-
-    </div>
+        <div class="profile" id="profile">
+            <div class="walletBox">
+                <h1>CONNECT TON WALLET</h1>
     
-    <div class="profile" id="profile">
-        <div class="walletBox">
-            <h1>CONNECT TON WALLET</h1>
-
-            <div id="ton-connect"></div>
+                <div id="ton-connect"></div>
+            </div>
+            <br>
+            <div class="infoBox">
+                <h1 id="balance"></h1>
+            </div>
         </div>
-    </div>
-
-    <div class="menu">
-        <div id="tasks-btn" class="tasks-btn">
-            <p><i class="fa-solid fa-list-check"></i></p>
-        </div>
-        <div id="main-btn" class="main-btn">
-            <p><i class="fa-solid fa-house"></i></p>
-        </div>
-        <div id="profile-btn" class="profile-btn">
-            <p><i class="fa-solid fa-user"></i></p>
+    
+        <div class="menu">
+            <div id="tasks-btn" class="tasks-btn">
+                <p><i class="fa-solid fa-list-check"></i></p>
+            </div>
+            <div id="main-btn" class="main-btn">
+                <p><i class="fa-solid fa-house"></i></p>
+            </div>
+            <div id="profile-btn" class="profile-btn">
+                <p><i class="fa-solid fa-user"></i></p>
+            </div>
         </div>
     </div>
 
@@ -150,7 +173,7 @@
             h1.textContent = (coins).toLocaleString('en-US')
         }
 
-        document.getElementById('coin').addEventListener("click", (e)=>{
+        async function coinClick() {
             coins++
             
             localStorage.setItem('coins', coins)
@@ -161,7 +184,7 @@
             const coinBox = document.getElementById('coin')
             const coinEffect = document.createElement('div')
             coinEffect.classList.add('coinEffect')
-            coinEffect.textContent = '1'
+            coinEffect.textContent = '+1'
 
             const rect = coinBox.getBoundingClientRect()
             const x = event.clientX - rect.left
@@ -175,7 +198,9 @@
             setTimeout(()=>{
                 coinEffect.remove()
             }, 2000)
-        })
+        }
+
+        document.getElementById('coin').addEventListener("click", coinClick)
 
         let interval = null
 
@@ -218,6 +243,11 @@
             twaReturnUrl: 'https://t.me/trollcoin_test_bot'
         };
 
+        // const walletAddress = tonConnect.account?.address;
+        // if(walletAddress){
+        //     document.getElementById('balance').textContent = 
+        // }
+
         const transaction = {
             validUntil: Math.floor(Date.now() / 1000) + 60, // expires in 60 sec
             messages: [
@@ -239,8 +269,9 @@
 
                 coins += 1000000;
                 localStorage.setItem('coins', coins)
+                h1.textContent = coins
             } catch(error){
-                alert('Something went wrong while sending TON.')
+                alert('Transaction failed.')
             }
         }
 
@@ -253,7 +284,7 @@
 
         document.getElementById('sendTonBtn').addEventListener('click', sendTon)
 
-        const channels = ['@durov', '@notcoin'];
+        // const channels = ['@durov', '@notcoin'];
 
         let followBtn = document.getElementsByClassName('followBtn');
 
@@ -262,6 +293,39 @@
                 window.location.href = channels[i]
             })
         }
+
+        document.getElementById('claim').addEventListener('click', ()=>{
+            let dailyCheckIn = localStorage.getItem('dailyCheck') || 0;
+
+            if(dailyCheckIn == 'yes') {
+                coins += 5000;
+                localStorage.setItem('coins', coins);
+                h1.textContent = coins;
+
+                document.getElementById('claim').style.background = '#0098EA'
+                document.getElementById('claim').style.color = 'white'
+                document.getElementById('claim').textContent = 'Completed'
+                document.getElementById('claim').disabled = true;
+            }
+        })
+
+        localStorage.setItem('dailyCheck', 'yes');
+
+        if(coins < 100){
+            document.getElementById('level').textContent = 'Level: Brokie'
+        } else if(coins > 100 && coins < 500){
+            document.getElementById('level').textContent = 'Level: Newbie'
+        } else if(coins > 500 && coins < 1000){
+            document.getElementById('level').textContent = 'Level: Player'
+        } else if(coins > 1000 && coins < 10000){
+            document.getElementById('level').textContent = 'Level: Master'
+        } else if(coins > 10000){
+            document.getElementById('level').textContent = 'Level: King'
+        }
+
+        document.getElementById('settingBtn').addEventListener('click', ()=>{
+            document.getElementById('setting').classList.toggle('active')
+        })
     </script>
 </body>
 </html>

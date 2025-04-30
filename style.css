@@ -2,6 +2,31 @@
 body{
     padding: 0;
     margin: 0;
+}
+.warning{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #212121;
+    color: white;
+    flex-direction: column;
+}
+.warning a{
+    padding: 10px 30px;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border-radius: 20px;
+}
+.content{
+    display: none;
+}
+@media(max-width: 700px){
+body{
+    padding: 0;
+    margin: 0;
     background-color: black;
     height: 100vh;
     display: flex;
@@ -89,7 +114,7 @@ body{
 
 .top div p{
     font-size: 1rem;
-    font-family: "Tilt Neon", sans-serif;
+    font-family: "Audiowide", sans-serif;
 }
 .main h1{
     color: #CFAF77;
@@ -118,7 +143,7 @@ body{
     height: 230px;
     background-color: #2E2E2E;
     border-radius: 50%;
-    border: 10px solid #474747;
+    border: 20px solid #363636;
     /* box-shadow: inset 6px 10px 80px black,
     inset -6px -10px 10px rgb(50, 50, 50),
     2px 2px 10px rgb(86, 86, 86); */
@@ -132,6 +157,10 @@ body{
     transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.5s ease;
     margin-bottom: 50px;
     position: relative;
+    background-image: url(troll-face-png-picture.png);
+    background-position: center;
+    background-size: 160px;
+    background-repeat: no-repeat;
 }
 .main .coin::before{
     position: absolute;
@@ -233,7 +262,7 @@ body{
     color: white;
     z-index: 10;
     font-size: 2rem;
-    animation: moveUp 1s forwards, fadeOut 1s 0.3s ease forwards;
+    animation: moveUp 0.7s forwards, fadeOut 1.2s ease forwards;
     position: absolute;
     font-family: "Audiowide", sans-serif;
 }
@@ -262,7 +291,7 @@ body{
 @keyframes moveUp{
     from{
         opacity: 0;
-        transform: scale(0);
+        transform: scale(0.8);
     }
     to{
         opacity: 1;
@@ -295,4 +324,27 @@ body{
 .main-btn.one{
     background-color: white;
     color: black;
+}
+
+.setting{
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    background-color: #212121;
+    transition: all 0.5s ease;
+}
+.sinfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    font-family: 'VT323', monospace;
+}
+.setting.active{
+    bottom: 0%;
+}
 }
