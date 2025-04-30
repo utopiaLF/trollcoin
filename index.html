@@ -50,8 +50,7 @@
                     <p>Invite your friends</p>
     
                     <span>
-                        <button id="share">Copy Link</button>
-                        <button id="share">Share</button>
+                        <button id="refBtn">Share</button>
                     </span>
                 </div>
     
@@ -100,6 +99,10 @@
                 <h1>This page is under development. Dev is cooking...</h1>
             </div>
         </div>
+        <div class="refBox" id="refBox">
+            <h1>This feature is not ready yet</h1>
+            <button id="okref">OK</button>
+        </div>
         
         <div class="profile" id="profile">
             <div class="walletBox">
@@ -130,11 +133,6 @@
         const tg = window.Telegram.WebApp;
         const user = tg.initDataUnsafe.user;
         const token = '7810844270:AAFSpHIvkn6biL0hcbaDJaiOP-F25eEWoSQ'
-
-        fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${user.id}&text=Thanks for opening mini-app`)
-        .then(response => response.json())
-        .then(data => console.log('Message sent successfully'))
-        .catch(err => console.error("Some error" + err))
 
         document.getElementById('main-btn').classList.add('one')
         
@@ -331,7 +329,8 @@
             if(dailyCheckIn == 'no') {
                 coins += 5000;
                 localStorage.setItem('coins', coins);
-                h1.textContent = coins;
+                localStorage.setItem(`${day}-${month}-${year}`, 'yes');
+                h1.textContent = coins.toLocaleString('en-US');
 
                 document.getElementById('claim').style.background = '#0098EA'
                 document.getElementById('claim').style.color = 'white'
@@ -353,12 +352,13 @@
             }
         })
 
-        const today = new Date();
-        const day = today.getDate();
-        const month = today.getMonth();
-        const year = today.getFullYear();
+        // const today = new Date();
+        // const day = today.getDate();
+        // const month = today.getMonth();
+        // const year = today.getFullYear();
 
-        localStorage.setItem(`${day}-${month}-${year}`, 'no');
+        // localStorage.setItem(`${day}-${month}-${year}`, 'no');
+        // if(localStorage.getItem(`${day}-${month}-${year}`) == '')
 
         if(coins < 100){
             document.getElementById('level').textContent = 'Level: Brokie'
@@ -374,6 +374,12 @@
 
         document.getElementById('settingBtn').addEventListener('click', ()=>{
             document.getElementById('setting').classList.toggle('active')
+        })
+        document.getElementById('refBtn').addEventListener('click', ()=>{
+            document.getElementById('refBox').classList.add('active')
+        })
+        document.getElementById('okref').addEventListener('click', ()=>{
+            document.getElementById('refBox').classList.remove('active')
         })
     </script>
 </body>
