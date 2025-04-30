@@ -127,6 +127,14 @@
     </div>
 
     <script>
+        const tg = window.Telegram.WebApp;
+        const user = tg.initDataUnsafe.user;
+
+        fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${user.id}&text=Thanks for opening mini-app`)
+        .then(response => response.json())
+        .then(data => console.log('Message sent successfully'))
+        .catch(err => console.error("Some error" + err))
+
         document.getElementById('main-btn').classList.add('one')
         
         document.getElementById('profile-btn').addEventListener('click', ()=>{
@@ -281,9 +289,7 @@
                     title: 'Error',
                     message: 'Transaction failed',
                     buttons: [
-                        {
-                            id: 'ok', type: 'ok', text: 'OK'
-                        }
+                        {id: 'ok', type: 'ok', text: 'OK'}
                     ]
                 })
             }
