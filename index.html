@@ -276,7 +276,13 @@
         async function sendTon() {
             try{
                 const result = await tonConnectUI.sendTransaction(transaction);
-                alert('Transaction sent!')
+                Telegram.WebApp.showPopup({
+                    title: 'Success',
+                    message: 'Transaction sent!',
+                    buttons: [
+                        {id: 'ok', type: 'ok', text: 'Done'}
+                    ]
+                })
                 localStorage.setItem('sendTon', 'completed')
                 document.getElementById('sendTonBtn').style.background = '#0098EA'
                 document.getElementById('sendTonBtn').style.color = 'white'
@@ -316,9 +322,13 @@
         }
 
         document.getElementById('claim').addEventListener('click', ()=>{
-            let dailyCheckIn = localStorage.getItem('dailyCheck') || 0;
+            const today = new Date();
+            const day = today.getDate();
+            const month = today.getMonth();
+            const year = today.getFullYear();
+            let dailyCheckIn = localStorage.getItem(`${day}-${month}-${year}`);
 
-            if(dailyCheckIn == 'yes') {
+            if(dailyCheckIn == 'no') {
                 coins += 5000;
                 localStorage.setItem('coins', coins);
                 h1.textContent = coins;
@@ -327,10 +337,28 @@
                 document.getElementById('claim').style.color = 'white'
                 document.getElementById('claim').textContent = 'Completed'
                 document.getElementById('claim').disabled = true;
+
+                fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${user.id}&text=You’ve received 5k coins! Enjoy your rewards!`)
+                .then(response => response.json())
+                .then(data => console.log('Message sent successfully'))
+                .catch(err => console.error("Some error" + err))
+            } else {
+                Telegram.WebApp.showPopup({
+                    title: 'Error',
+                    message: 'No nigga, come back tomorrow for a new gift',
+                    buttons: [
+                        {id: 'ok', type: 'ok', text: 'OK'}
+                    ]
+                })
             }
         })
 
-        localStorage.setItem('dailyCheck', 'yes');
+        const today = new Date();
+        const day = today.getDate();
+        const month = today.getMonth();
+        const year = today.getFullYear();
+
+        localStorage.setItem(`${day}-${month}-${year}`, 'no');
 
         if(coins < 100){
             document.getElementById('level').textContent = 'Level: Brokie'
