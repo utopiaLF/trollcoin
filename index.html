@@ -129,6 +129,7 @@
     <script>
         const tg = window.Telegram.WebApp;
         const user = tg.initDataUnsafe.user;
+        const token = '7810844270:AAFSpHIvkn6biL0hcbaDJaiOP-F25eEWoSQ'
 
         fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${user.id}&text=Thanks for opening mini-app`)
         .then(response => response.json())
