@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" href="style.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-        <!-- <script async src="https://telegram.org/js/telegram-web-app.js"></script> -->
+        <script async src="https://telegram.org/js/telegram-web-app.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
     <title>Document</title>
@@ -168,7 +168,7 @@
         
         if(!coins) {
             localStorage.setItem('coins', 0)
-            document.getElementById('h1').innerText = coins
+            document.getElementById('h1').innerText = 0
         } else {
             h1.textContent = (coins).toLocaleString('en-US')
         }
@@ -201,6 +201,12 @@
         }
 
         document.getElementById('coin').addEventListener("click", coinClick)
+        // document.getElementById('coin').addEventListener("touchstart", (e)=>{
+        //     e.preventDefault();
+        //     const numbOfFingers = e.touches.length;
+        //     console.log(numbOfFingers);
+            
+        // })
 
         let interval = null
 
@@ -271,7 +277,15 @@
                 localStorage.setItem('coins', coins)
                 h1.textContent = coins
             } catch(error){
-                alert('Transaction failed.')
+                Telegram.WebApp.showPopup({
+                    title: 'Error',
+                    message: 'Transaction failed',
+                    buttons: [
+                        {
+                            id: 'ok', type: 'ok', text: 'OK'
+                        }
+                    ]
+                })
             }
         }
 
