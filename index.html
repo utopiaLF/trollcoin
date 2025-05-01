@@ -324,9 +324,9 @@
             const day = today.getDate();
             const month = today.getMonth();
             const year = today.getFullYear();
-            let dailyCheckIn = localStorage.getItem(`${day}-${month}-${year}`);
+            let dailyCheckIn = localStorage.getItem(`${day}-${month}-${year}`) || 0;
 
-            if(dailyCheckIn == 'no') {
+            if(dailyCheckIn == 0) {
                 coins += 5000;
                 localStorage.setItem('coins', coins);
                 localStorage.setItem(`${day}-${month}-${year}`, 'yes');
@@ -344,7 +344,7 @@
             } else {
                 Telegram.WebApp.showPopup({
                     title: 'Error',
-                    message: 'No nigga, come back tomorrow for a new gift',
+                    message: 'You have already claimed your reward. Come back tomorrow!',
                     buttons: [
                         {id: 'ok', type: 'ok', text: 'OK'}
                     ]
