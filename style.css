@@ -58,7 +58,7 @@ body{
     align-items: center;
 }
 .taskBox .task{
-    width: 90%;
+    width: 95%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -71,13 +71,13 @@ body{
     margin-bottom: 10px;
 }
 .taskBox .task p{
-    font-family: "Tilt Neon", sans-serif;
+    font-family: sans-serif;
     font-size: 1.1rem;
     font-weight: 500;
 }
 .taskBox .task button{
-    padding: 5px 20px;
-    /* font-size: 1rem; */
+    padding: 7px 30px;
+    font-size: 0.9rem;
     border: none;
     outline: none;
     background-color: white;
@@ -111,16 +111,17 @@ body{
 .top div{
     width: max-content;
     background-color: #212121;
-    padding: 0px 30px;
-    border-radius: 8px;
-    height: 40px;
+    padding: 0px 50px;
+    border-radius: 5px;
+    height: 50px;
     display: flex;
     align-items: center;
 }
 
 .top div p{
-    font-size: 1rem;
-    font-family: "Audiowide", sans-serif;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    margin-left: 5px;
 }
 .main h1{
     color: #CFAF77;
@@ -244,7 +245,7 @@ body{
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 100px;
+    height: 60px;
     background-color: #2E2E2E;
     display: flex;
     align-items: center;
@@ -255,12 +256,15 @@ body{
 .menu div{
     width: 25%;
     height: 70%;
-    background-color: #212121;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
     padding: 0px 5px;
+    transition: all 0.1s;
+}
+.menu div:active{
+    background-color: #2121217f;
 }
 .menu div p{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -316,22 +320,25 @@ body{
     }
 }
 
+.tasks-btn, .main-btn, .profile-btn{
+    color: #ffffff90;
+}
+
 .tasks-btn.active{
-    background-color: white;
-    color: black;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 6px #FFFFFF;
 }
 .main-btn.active{
-    background-color: white;
-    color: black;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 6px #FFFFFF;
 }
 .profile-btn.active{
-    background-color: white;
-    color: black;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 6px #FFFFFF;
 }
 
 .main-btn.one{
-    background-color: white;
-    color: black;
+    color: #FFFFFF;
 }
 
 .setting{
@@ -350,7 +357,7 @@ body{
     flex-direction: column;
     text-align: center;
     padding: 20px;
-    font-family: 'VT323', monospace;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .setting.active{
     bottom: 0%;

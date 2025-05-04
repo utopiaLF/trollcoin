@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" href="style.css">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.12.1/font/bootstrap-icons.min.css">
         <script async src="https://telegram.org/js/telegram-web-app.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
@@ -32,6 +32,7 @@
     
                     <button class="followBtn" id="claim">Claim</button>
                 </div>
+                <p>You can earn +5k Trollcoins daily</p>
                 <!-- <h2>Follow channels</h2>
     
                 <div class="task">
@@ -56,21 +57,23 @@
     
                 <h2>TON transaction</h2>
                 <div class="task">
-                    <p>Send 0.05 TON (and earn +1mln coins)</p>
+                    <p>Send 0.05 TON</p>
     
                     <button id="sendTonBtn">Complete</button>
                 </div>
+                <p>Send 0.05TON and earn +1mln trllcoins</p>
             </div>
         </div>
-    
+
         <div class="main" id="main">
             <div class="top">
                 <div>
+                    <img src="troll-face-png-picture.png" width="25" id="levelPic" alt="">
                     <p id="level">Level</p>
                 </div>
     
                 <div class="settingBtn" id="settingBtn">
-                    <p><i class="fas fa-cog"></i></p>
+                    <i class="bi bi-sliders"></i>
                 </div>
             </div>
             
@@ -95,7 +98,6 @@
         </div>
         <div class="setting" id="setting">
             <div class="sinfo">
-                <img src="https://i.gifer.com/5Mz4.gif" width="150" alt="Fire gif">
                 <h1>This page is under development. Dev is cooking...</h1>
             </div>
         </div>
@@ -118,13 +120,13 @@
     
         <div class="menu">
             <div id="tasks-btn" class="tasks-btn">
-                <p><i class="fa-solid fa-list-check"></i></p>
+                <i class="bi bi-ui-checks"></i>
             </div>
             <div id="main-btn" class="main-btn">
-                <p><i class="fa-solid fa-house"></i></p>
+                <i class="bi bi-coin"></i>
             </div>
             <div id="profile-btn" class="profile-btn">
-                <p><i class="fa-solid fa-user"></i></p>
+                <i class="bi bi-wallet2"></i>
             </div>
         </div>
     </div>
@@ -303,7 +305,7 @@
         if(localStorage.getItem('sendTon') === 'completed'){
             document.getElementById('sendTonBtn').style.background = '#0098EA'
             document.getElementById('sendTonBtn').style.color = 'white'
-            document.getElementById('sendTonBtn').textContent = 'Completed'
+            document.getElementById('sendTonBtn').textContent = 'Completed <i class="bi bi-check-all"></i>'
             document.getElementById('sendTonBtn').disabled = true;
         }
 
@@ -319,11 +321,11 @@
             })
         }
 
+        const today = new Date();
+        const day = today.getDate();
+        const month = today.getMonth();
+        const year = today.getFullYear();
         document.getElementById('claim').addEventListener('click', ()=>{
-            const today = new Date();
-            const day = today.getDate();
-            const month = today.getMonth();
-            const year = today.getFullYear();
             let dailyCheckIn = localStorage.getItem(`${day}-${month}-${year}`) || 0;
 
             if(dailyCheckIn == 0) {
@@ -352,13 +354,12 @@
             }
         })
 
-        // const today = new Date();
-        // const day = today.getDate();
-        // const month = today.getMonth();
-        // const year = today.getFullYear();
-
-        // localStorage.setItem(`${day}-${month}-${year}`, 'no');
-        // if(localStorage.getItem(`${day}-${month}-${year}`) == '')
+        if(localStorage.getItem(`${day}-${month}-${year}`) !== 0){
+            document.getElementById('claim').style.background = '#0098EA'
+            document.getElementById('claim').style.color = 'white'
+            document.getElementById('claim').innerHTML = 'Completed <i class="bi bi-check-all"></i>'
+            document.getElementById('claim').disabled = true;
+        }
 
         if(coins < 100){
             document.getElementById('level').textContent = 'Level: Brokie'
