@@ -61,14 +61,14 @@
     
                     <button id="sendTonBtn">Complete</button>
                 </div>
-                <p>Send 0.05TON and earn +1mln trllcoins</p>
+                <p>Send 0.05TON and earn +1mln Trollcoins</p>
             </div>
         </div>
 
         <div class="main" id="main">
             <div class="top">
                 <div>
-                    <img src="troll-face-png-picture.png" width="25" id="levelPic" alt="">
+                    <img src="troll-face-78-1.png" width="25" id="levelPic" alt="">
                     <p id="level">Level</p>
                 </div>
     
@@ -80,20 +80,18 @@
             <h1 id="h1">0</h1>
     
             <div class="coin" id="coin">
-                 <!-- <p style="color: grey;">Tap or just hold</p> -->
+                 <!-- <p style="color: grey;">Tap</p> -->
             </div>
+
+            <!-- <img src="notcoin.png" class="coin" id="coin" alt=""> -->
     
-            <div class="xtap">
-                <!-- <div>
-                    <p>100/100</p>
+            <!-- <div class="xtap">
+                <div>
+                    <p>1000/1000</p>
                 </div>
                 <div class="guru" id="guru">
-                    <p><i class="fa-solid fa-fire"></i></p>
-                </div> -->
-                
-            </div>
-    
-            <!-- <div class="guruBox"></div> -->
+                </div>
+            </div> -->
     
         </div>
         <div class="setting" id="setting">
@@ -104,6 +102,22 @@
         <div class="refBox" id="refBox">
             <h1>This feature is not ready yet</h1>
             <button id="okref">OK</button>
+        </div>
+
+        <div class="stat" id="stat">
+            <!-- From Uiverse.io by zanina-yassine --> 
+            <div class="tab-container">
+                <input type="radio" name="tab" id="tab1" class="tab tab--1" />
+                <label class="tab_label" for="tab1">Statistics</label>
+            
+                <input type="radio" name="tab" id="tab2" class="tab tab--2" />
+                <label class="tab_label" for="tab2">Liderboard</label>
+            
+                <input type="radio" name="tab" id="tab3" class="tab tab--3" />
+                <label class="tab_label" for="tab3">Notifications</label>
+            
+                <div class="indicator"></div>
+            </div>
         </div>
         
         <div class="profile" id="profile">
@@ -125,6 +139,9 @@
             <div id="main-btn" class="main-btn">
                 <i class="bi bi-coin"></i>
             </div>
+            <div id="stat-btn" class="stat-btn">
+                <i class="bi bi-bar-chart"></i>
+            </div>
             <div id="profile-btn" class="profile-btn">
                 <i class="bi bi-wallet2"></i>
             </div>
@@ -141,33 +158,51 @@
         document.getElementById('profile-btn').addEventListener('click', ()=>{
             document.getElementById('tasks').style.display = 'none'
             document.getElementById('main').style.display = 'none'
+            document.getElementById('stat').style.display = 'none'
             document.getElementById('profile').style.display = 'block'
             
             document.getElementById('profile-btn').classList.add('active');
             document.getElementById('main-btn').classList.remove('active');
             document.getElementById('main-btn').classList.remove('one')
             document.getElementById('tasks-btn').classList.remove('active');
+            document.getElementById('stat-btn').classList.remove('active');
         })
         
         document.getElementById('main-btn').addEventListener('click', ()=>{
             document.getElementById('tasks').style.display = 'none'
             document.getElementById('main').style.display = 'block'
             document.getElementById('profile').style.display = 'none'
+            document.getElementById('stat').style.display = 'none'
             
             document.getElementById('main-btn').classList.add('active');
             document.getElementById('profile-btn').classList.remove('active');
             document.getElementById('tasks-btn').classList.remove('active');
+            document.getElementById('stat-btn').classList.remove('active');
         })
         
         document.getElementById('tasks-btn').addEventListener('click', ()=>{
             document.getElementById('tasks').style.display = 'block'
             document.getElementById('main').style.display = 'none'
             document.getElementById('profile').style.display = 'none'
+            document.getElementById('stat').style.display = 'none'
             
             document.getElementById('tasks-btn').classList.add('active');
             document.getElementById('profile-btn').classList.remove('active');
             document.getElementById('main-btn').classList.remove('active');
-            document.getElementById('main-btn').classList.remove('one')
+            document.getElementById('main-btn').classList.remove('one');
+            document.getElementById('stat-btn').classList.remove('active');
+        })
+        document.getElementById('stat-btn').addEventListener('click', ()=>{
+            document.getElementById('tasks').style.display = 'none'
+            document.getElementById('main').style.display = 'none'
+            document.getElementById('profile').style.display = 'none'
+            document.getElementById('stat').style.display = 'block'
+            
+            document.getElementById('tasks-btn').classList.remove('active');
+            document.getElementById('profile-btn').classList.remove('active');
+            document.getElementById('main-btn').classList.remove('active');
+            document.getElementById('main-btn').classList.remove('one');
+            document.getElementById('stat-btn').classList.add('active');
         })
 
         let coins = Number(localStorage.getItem('coins'))
@@ -184,6 +219,15 @@
 
         async function coinClick() {
             coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
             
             localStorage.setItem('coins', coins)
 
@@ -193,7 +237,7 @@
             const coinBox = document.getElementById('coin')
             const coinEffect = document.createElement('div')
             coinEffect.classList.add('coinEffect')
-            coinEffect.textContent = '+1'
+            coinEffect.textContent = '+10'
 
             const rect = coinBox.getBoundingClientRect()
             const x = event.clientX - rect.left
@@ -305,7 +349,7 @@
         if(localStorage.getItem('sendTon') === 'completed'){
             document.getElementById('sendTonBtn').style.background = '#0098EA'
             document.getElementById('sendTonBtn').style.color = 'white'
-            document.getElementById('sendTonBtn').textContent = 'Completed <i class="bi bi-check-all"></i>'
+            document.getElementById('sendTonBtn').innerHTML = 'Completed <i class="bi bi-check-all"></i>'
             document.getElementById('sendTonBtn').disabled = true;
         }
 

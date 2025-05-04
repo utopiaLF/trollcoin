@@ -148,26 +148,27 @@ body{
 .main .coin{
     width: 230px;
     height: 230px;
-    background-color: #2E2E2E;
+    /* background-color: #2E2E2E; */
     border-radius: 50%;
-    border: 20px solid #363636;
+    /* border: 20px solid #363636; */
     /* box-shadow: inset 6px 10px 80px black,
     inset -6px -10px 10px rgb(50, 50, 50),
     2px 2px 10px rgb(86, 86, 86); */
-    box-shadow: inset 6px 6px 20px black,
+    /* box-shadow: inset 6px 6px 20px black,
     inset -6px -6px 20px black,
     6px 6px 10px 1px #363636,
-    -6px -6px 30px #2E2E2E;
+    -6px -6px 30px #2E2E2E; */
     display: flex;
     justify-content: center;
     align-items: center;
     transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.5s ease;
     margin-bottom: 50px;
     position: relative;
-    background-image: url(troll-face-png-picture.png);
+    background-image: url(notcoin.png);
     background-position: center;
-    background-size: 160px;
+    background-size: 230px;
     background-repeat: no-repeat;
+    font-size: 2rem;
 }
 .main .coin::before{
     position: absolute;
@@ -210,7 +211,7 @@ body{
     box-shadow: inset 0px 0px 10px white, 0px 0px 40px white;
 }
 
-.xtap{
+/* .xtap{
     width: 100%;
     height: max-content;
     position: fixed;
@@ -223,12 +224,12 @@ body{
 }
 .xtap div{
     background-color: #474747;
-    padding: 0px 30px;
-    border-radius: 8px;
+    padding: 5px 30px;
+    border-radius: 5px;
     height: 40px;
     display: flex;
     align-items: center;
-}
+} */
 
 /* .guruBox{
     position: absolute;
@@ -261,10 +262,10 @@ body{
     align-items: center;
     border-radius: 5px;
     padding: 0px 5px;
-    transition: all 0.1s;
+    transition: all 0.2s;
 }
 .menu div:active{
-    background-color: #2121217f;
+    transform: scale(1.1);
 }
 .menu div p{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -320,25 +321,46 @@ body{
     }
 }
 
-.tasks-btn, .main-btn, .profile-btn{
+.stat{
+    width: 100%;
+    height: 100vh;
+    display: none;
+}
+.stat.active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tasks-btn, .main-btn, .profile-btn, .stat-btn{
     color: #ffffff90;
 }
 
 .tasks-btn.active{
     color: #FFFFFF;
-    text-shadow: 0px 0px 6px #FFFFFF;
+    text-shadow: 0px 0px 15px #FFFFFF;
+    font-size: 1rem;
 }
 .main-btn.active{
     color: #FFFFFF;
-    text-shadow: 0px 0px 6px #FFFFFF;
+    text-shadow: 0px 0px 15px #FFFFFF;
+    font-size: 1rem;
 }
 .profile-btn.active{
     color: #FFFFFF;
-    text-shadow: 0px 0px 6px #FFFFFF;
+    text-shadow: 0px 0px 15px #FFFFFF;
+    font-size: 1rem;
+}
+.stat-btn.active{
+    color: #FFFFFF;
+    text-shadow: 0px 0px 15px #FFFFFF;
+    font-size: 1rem;
 }
 
 .main-btn.one{
     color: #FFFFFF;
+    text-shadow: 0px 0px 15px #FFFFFF;
+    font-size: 1rem;
 }
 
 .setting{
@@ -382,4 +404,89 @@ body{
     height: 50px;
     border-radius: 20px;
 }
+/* From Uiverse.io by zanina-yassine */ 
+/* Remove this container when use*/
+.component-title {
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    top: 30px;
+    left: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-align: center;
+  }
+  
+  .tab-container {
+    position: relative;
+  
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  
+    padding: 2px;
+  
+    background-color: #212121;
+    border-radius: 9px;
+    margin-top: 30px;
+    color: black;
+    font-weight: 600;
+  }
+  
+  .indicator {
+    content: "";
+    width: 130px;
+    height: 28px;
+    background: #474747;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: 9;
+    border: 0.5px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 7px;
+    transition: all 0.2s ease-out;
+  }
+  
+  .tab {
+    width: 130px;
+    height: 28px;
+    position: absolute;
+    z-index: 99;
+    outline: none;
+    opacity: 0;
+  }
+  
+  .tab_label {
+    width: 130px;
+    height: 28px;
+  
+    position: relative;
+    z-index: 999;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    border: 0;
+  
+    font-size: 0.75rem;
+    opacity: 0.6;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+  
+  .tab--1:checked ~ .indicator {
+    left: 2px;
+  }
+  
+  .tab--2:checked ~ .indicator {
+    left: calc(130px + 2px);
+  }
+  
+  .tab--3:checked ~ .indicator {
+    left: calc(130px * 2 + 2px);
+  }
 }
