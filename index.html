@@ -447,6 +447,8 @@
 
         coinSkin1.addEventListener('click', ()=>{
             document.getElementById('coin').classList.add('skin1');
+            document.getElementById('coin').classList.remove('skin2');
+            document.getElementById('coin').classList.remove('skin3');
             coinSkin1.classList.add('selected');
             coinSkin2.classList.remove('selected');
             coinSkin3.classList.remove('selected');
@@ -455,6 +457,8 @@
         })
         coinSkin2.addEventListener('click', ()=>{
             document.getElementById('coin').classList.add('skin2');
+            document.getElementById('coin').classList.remove('skin1');
+            document.getElementById('coin').classList.remove('skin3');
             coinSkin1.classList.remove('selected');
             coinSkin2.classList.add('selected');
             coinSkin3.classList.remove('selected');
@@ -462,6 +466,8 @@
         })
         coinSkin3.addEventListener('click', ()=>{
             document.getElementById('coin').classList.add('skin3');
+            document.getElementById('coin').classList.remove('skin1');
+            document.getElementById('coin').classList.remove('skin2');
             coinSkin1.classList.remove('selected');
             coinSkin2.classList.remove('selected');
             coinSkin3.classList.add('selected');
