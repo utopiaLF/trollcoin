@@ -8,6 +8,7 @@
         <script async src="https://telegram.org/js/telegram-web-app.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -30,7 +31,7 @@
                 <div class="task">
                     <p>Daily check-in</p>
     
-                    <button class="followBtn" id="claim">Claim</button>
+                    <button class="followBtn" id="claim" onclick="launchConfetti()">Claim</button>
                 </div>
                 <p>You can earn +5k Trollcoins daily</p>
                 <!-- <h2>Follow channels</h2>
@@ -419,6 +420,14 @@
             document.getElementById('claim').disabled = true;
         }
 
+        function launchConfetti() {
+            confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 }
+            });
+        }
+
         if(coins < 100){
             document.getElementById('level').textContent = 'Level: Brokie'
         } else if(coins > 100 && coins < 500){
@@ -446,6 +455,7 @@
         let coinSkin3 = document.getElementById('skin3');
 
         coinSkin1.addEventListener('click', ()=>{
+            localStorage.setItem('coinSkin', 'skin1');
             document.getElementById('coin').classList.add('skin1');
             document.getElementById('coin').classList.remove('skin2');
             document.getElementById('coin').classList.remove('skin3');
@@ -456,6 +466,7 @@
             document.getElementById('tapMe').style.display = 'none'
         })
         coinSkin2.addEventListener('click', ()=>{
+            localStorage.setItem('coinSkin', 'skin2');
             document.getElementById('coin').classList.add('skin2');
             document.getElementById('coin').classList.remove('skin1');
             document.getElementById('coin').classList.remove('skin3');
@@ -465,6 +476,7 @@
             document.getElementById('tapMe').style.display = 'none'
         })
         coinSkin3.addEventListener('click', ()=>{
+            localStorage.setItem('coinSkin', 'skin3');
             document.getElementById('coin').classList.add('skin3');
             document.getElementById('coin').classList.remove('skin1');
             document.getElementById('coin').classList.remove('skin2');
@@ -473,6 +485,33 @@
             coinSkin3.classList.add('selected');
             document.getElementById('tapMe').style.display = 'none'
         })
+
+        if(localStorage.getItem('coinSkin') == 'skin1') {
+            document.getElementById('coin').classList.add('skin1');
+            document.getElementById('coin').classList.remove('skin2');
+            document.getElementById('coin').classList.remove('skin3');
+            coinSkin1.classList.add('selected');
+            coinSkin2.classList.remove('selected');
+            coinSkin3.classList.remove('selected');
+
+            document.getElementById('tapMe').style.display = 'none'
+        } else if(localStorage.getItem('coinSkin') == 'skin2'){
+            document.getElementById('coin').classList.add('skin2');
+            document.getElementById('coin').classList.remove('skin1');
+            document.getElementById('coin').classList.remove('skin3');
+            coinSkin1.classList.remove('selected');
+            coinSkin2.classList.add('selected');
+            coinSkin3.classList.remove('selected');
+            document.getElementById('tapMe').style.display = 'none'
+        } else if(localStorage.getItem('coinSkin') == 'skin3') {
+            document.getElementById('coin').classList.add('skin3');
+            document.getElementById('coin').classList.remove('skin1');
+            document.getElementById('coin').classList.remove('skin2');
+            coinSkin1.classList.remove('selected');
+            coinSkin2.classList.remove('selected');
+            coinSkin3.classList.add('selected');
+            document.getElementById('tapMe').style.display = 'none'
+        }
     </script>
 </body>
 </html>
