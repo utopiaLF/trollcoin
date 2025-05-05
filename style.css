@@ -31,6 +31,7 @@ body{
     display: block;
 }
 body{
+    width: 100%;
     padding: 0;
     margin: 0;
     background-color: black;
@@ -47,18 +48,17 @@ body{
 .tasks{
     width: 100%;
     height: 100vh;
-    display: flex;
     display: none;
 }
 .taskBox{
-    width: 100%;
+    width: 95vw;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .taskBox .task{
-    width: 95%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -111,7 +111,7 @@ body{
 .top div{
     width: max-content;
     background-color: #212121;
-    padding: 0px 50px;
+    padding: 0px 40px;
     border-radius: 5px;
     height: 50px;
     display: flex;
@@ -148,26 +148,26 @@ body{
 .main .coin{
     width: 230px;
     height: 230px;
-    /* background-color: #2E2E2E; */
+    background-color: #2E2E2E;
     border-radius: 50%;
-    /* border: 20px solid #363636; */
-    /* box-shadow: inset 6px 10px 80px black,
+    border: 20px solid #363636;
+    box-shadow: inset 6px 10px 80px black,
     inset -6px -10px 10px rgb(50, 50, 50),
-    2px 2px 10px rgb(86, 86, 86); */
-    /* box-shadow: inset 6px 6px 20px black,
+    2px 2px 10px rgb(86, 86, 86);
+    box-shadow: inset 6px 6px 20px black,
     inset -6px -6px 20px black,
     6px 6px 10px 1px #363636,
-    -6px -6px 30px #2E2E2E; */
+    -6px -6px 30px #2E2E2E;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.5s ease;
     margin-bottom: 50px;
     position: relative;
-    background-image: url(notcoin.png);
+    /* background-image: url(pngimg.com\ -\ trollface_PNG44.png);
     background-position: center;
-    background-size: 230px;
-    background-repeat: no-repeat;
+    background-size: 170px;
+    background-repeat: no-repeat; */
     font-size: 2rem;
 }
 .main .coin::before{
@@ -209,6 +209,75 @@ body{
 .main .coin.active{
     border-color: white;
     box-shadow: inset 0px 0px 10px white, 0px 0px 40px white;
+}
+.main .coin.skin1{
+    box-shadow: none;
+    border: none;
+    background: none;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.5s ease;
+    margin-bottom: 50px;
+    position: relative;
+    background-image: url(notcoin.png);
+    background-position: center;
+    background-size: 250px;
+    background-repeat: no-repeat;
+    font-size: 2rem;
+}
+.main .coin.skin2{
+    width: 230px;
+    height: 230px;
+    background-color: #2E2E2E;
+    border-radius: 50%;
+    border: 20px solid #363636;
+    box-shadow: inset 6px 10px 80px black,
+    inset -6px -10px 10px rgb(50, 50, 50),
+    2px 2px 10px rgb(86, 86, 86);
+    box-shadow: inset 6px 6px 20px black,
+    inset -6px -6px 20px black,
+    6px 6px 10px 1px #363636,
+    -6px -6px 30px #2E2E2E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.5s ease;
+    margin-bottom: 50px;
+    position: relative;
+    background-image: url(troll-face-png-picture.png);
+    background-position: center;
+    background-size: 170px;
+    background-repeat: no-repeat;
+    font-size: 2rem;
+}
+.main .coin.skin3{
+    width: 230px;
+    height: 230px;
+    background-color: #2E2E2E;
+    border-radius: 50%;
+    border: 20px solid #363636;
+    box-shadow: inset 6px 10px 80px black,
+    inset -6px -10px 10px rgb(50, 50, 50),
+    2px 2px 10px rgb(86, 86, 86);
+    box-shadow: inset 6px 6px 20px black,
+    inset -6px -6px 20px black,
+    6px 6px 10px 1px #363636,
+    -6px -6px 30px #2E2E2E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.5s ease;
+    margin-bottom: 50px;
+    position: relative;
+    background-image: url(troll-face-78-1.png);
+    background-position: center;
+    background-size: 150px;
+    background-repeat: no-repeat;
+    font-size: 2rem;
 }
 
 /* .xtap{
@@ -263,6 +332,7 @@ body{
     border-radius: 5px;
     padding: 0px 5px;
     transition: all 0.2s;
+    font-size: 1.4rem;
 }
 .menu div:active{
     transform: scale(1.1);
@@ -339,28 +409,28 @@ body{
 .tasks-btn.active{
     color: #FFFFFF;
     text-shadow: 0px 0px 15px #FFFFFF;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 .main-btn.active{
     color: #FFFFFF;
     text-shadow: 0px 0px 15px #FFFFFF;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 .profile-btn.active{
     color: #FFFFFF;
     text-shadow: 0px 0px 15px #FFFFFF;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 .stat-btn.active{
     color: #FFFFFF;
     text-shadow: 0px 0px 15px #FFFFFF;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 .main-btn.one{
     color: #FFFFFF;
     text-shadow: 0px 0px 15px #FFFFFF;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 .setting{
@@ -383,6 +453,29 @@ body{
 }
 .setting.active{
     bottom: 0%;
+}
+
+.setting .allCoins{
+    padding: 10px;
+}
+.setting .allCoins h1{
+    font-family: sans-serif;
+}
+.setting .change_coin{
+    display: flex;
+    width: 100%;
+    height: max-content;
+    justify-content: space-between;
+    background-color: black;
+    padding: 5px 40px;
+    border-radius: 5px;
+    align-items: center;
+    box-sizing: border-box;
+    margin-top: 10px;
+    font-family: sans-serif;
+}
+.setting .change_coin.selected{
+    outline: 2px solid #FFFFFF;
 }
 .refBox{
     position: absolute;

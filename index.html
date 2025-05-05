@@ -68,7 +68,7 @@
         <div class="main" id="main">
             <div class="top">
                 <div>
-                    <img src="troll-face-78-1.png" width="25" id="levelPic" alt="">
+                    <!-- <img src="troll-face-78-1.png" width="25" id="levelPic" alt=""> -->
                     <p id="level">Level</p>
                 </div>
     
@@ -80,7 +80,7 @@
             <h1 id="h1">0</h1>
     
             <div class="coin" id="coin">
-                 <!-- <p style="color: grey;">Tap</p> -->
+                 <p id="tapMe" style="color: grey;">Tap</p>
             </div>
 
             <!-- <img src="notcoin.png" class="coin" id="coin" alt=""> -->
@@ -95,8 +95,20 @@
     
         </div>
         <div class="setting" id="setting">
-            <div class="sinfo">
-                <h1>This page is under development. Dev is cooking...</h1>
+            <div class="allCoins">
+                <h1>Choose skin</h1>
+                <div class="change_coin" id="skin1">
+                    <img src="notcoin.png" width="50" height="50" alt="Icon">
+                    <h2>Notcoin</h2>
+                </div>
+                <div class="change_coin" id="skin2">
+                    <img src="troll-face-png-picture.png" width="50" height="50" alt="Icon">
+                    <h2>T-coin 1</h2>
+                </div>
+                <div class="change_coin" id="skin3">
+                    <img src="troll-face-78-1.png" width="50" height="50" alt="Icon">
+                    <h2>T-coin 2</h2>
+                </div>
             </div>
         </div>
         <div class="refBox" id="refBox">
@@ -398,7 +410,9 @@
             }
         })
 
-        if(localStorage.getItem(`${day}-${month}-${year}`) !== 0){
+        let todayCheck = localStorage.getItem(`${day}-${month}-${year}`) || 0;
+
+        if(todayCheck !== 0){
             document.getElementById('claim').style.background = '#0098EA'
             document.getElementById('claim').style.color = 'white'
             document.getElementById('claim').innerHTML = 'Completed <i class="bi bi-check-all"></i>'
@@ -425,6 +439,33 @@
         })
         document.getElementById('okref').addEventListener('click', ()=>{
             document.getElementById('refBox').classList.remove('active')
+        })
+
+        let coinSkin1 = document.getElementById('skin1');
+        let coinSkin2 = document.getElementById('skin2');
+        let coinSkin3 = document.getElementById('skin3');
+
+        coinSkin1.addEventListener('click', ()=>{
+            document.getElementById('coin').classList.add('skin1');
+            coinSkin1.classList.add('selected');
+            coinSkin2.classList.remove('selected');
+            coinSkin3.classList.remove('selected');
+
+            document.getElementById('tapMe').style.display = 'none'
+        })
+        coinSkin2.addEventListener('click', ()=>{
+            document.getElementById('coin').classList.add('skin2');
+            coinSkin1.classList.remove('selected');
+            coinSkin2.classList.add('selected');
+            coinSkin3.classList.remove('selected');
+            document.getElementById('tapMe').style.display = 'none'
+        })
+        coinSkin3.addEventListener('click', ()=>{
+            document.getElementById('coin').classList.add('skin3');
+            coinSkin1.classList.remove('selected');
+            coinSkin2.classList.remove('selected');
+            coinSkin3.classList.add('selected');
+            document.getElementById('tapMe').style.display = 'none'
         })
     </script>
 </body>
