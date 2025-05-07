@@ -102,6 +102,8 @@
                 <div class="change_coin" id="skin1">
                     <img src="notcoin.png" width="50" height="50" alt="Icon">
                     <h2>Notcoin</h2>
+
+                    <button id="buySkin" class="buySkin"><i class="bi bi-bag-fill"></i> 0.05TON</button>
                 </div>
                 <div class="change_coin" id="skin2">
                     <img src="troll-face-png-picture.png" width="50" height="50" alt="Icon">
@@ -230,7 +232,7 @@
             const coinBox = document.getElementById('coin')
             const coinEffect = document.createElement('div')
             coinEffect.classList.add('coinEffect')
-            coinEffect.textContent = `+${fingersCount}`
+            coinEffect.textContent = `+1`
 
             const rect = coinBox.getBoundingClientRect();
             const x = eventX - rect.left;
@@ -246,6 +248,7 @@
             }, 2000)
         }
 
+        // document.getElementById('coin').addEventListener('touchstart', coinClick)
         document.getElementById('coin').addEventListener('touchstart', (e) => {
             e.preventDefault();
             const touches = e.touches.length;
@@ -433,17 +436,63 @@
         let coinSkin2 = document.getElementById('skin2');
         let coinSkin3 = document.getElementById('skin3');
 
-        coinSkin1.addEventListener('click', ()=>{
-            localStorage.setItem('coinSkin', 'skin1');
-            document.getElementById('coin').classList.add('skin1');
-            document.getElementById('coin').classList.remove('skin2');
-            document.getElementById('coin').classList.remove('skin3');
-            coinSkin1.classList.add('selected');
-            coinSkin2.classList.remove('selected');
-            coinSkin3.classList.remove('selected');
+        const notcoinSkin = localStorage.getItem('notcoinSkin') || 0;
+        if(notcoinSkin == 0){
+            document.getElementById('skin1').classList.add('not_allowed')
+        } else {
+            document.getElementById('buySkin').style.display = 'none'
+            document.getElementById('skin1').classList.remove('not_allowed')
+        }
 
-            document.getElementById('tapMe').style.display = 'none'
+        coinSkin1.addEventListener('click', ()=>{
+            if(notcoinSkin == 'allowed'){
+                localStorage.setItem('coinSkin', 'skin1');
+                document.getElementById('coin').classList.add('skin1');
+                document.getElementById('coin').classList.remove('skin2');
+                document.getElementById('coin').classList.remove('skin3');
+                coinSkin1.classList.add('selected');
+                coinSkin2.classList.remove('selected');
+                coinSkin3.classList.remove('selected');
+    
+                document.getElementById('tapMe').style.display = 'none'
+            } else {
+                Telegram.WebApp.showPopup({
+                    title: 'Error',
+                    message: 'To use this skin you need to buy',
+                    buttons: [
+                        {id: 'ok', type: 'ok', text: 'OK'}
+                    ]
+                })
+            }
         })
+
+        async function sendTonForSkin1() {
+            try{
+                const result = await tonConnectUI.sendTransaction(transaction);
+                Telegram.WebApp.showPopup({
+                    title: 'Success',
+                    message: 'You bought a new skin!',
+                    buttons: [
+                        {id: 'ok', type: 'ok', text: 'Done'}
+                    ]
+                })
+                localStorage.setItem('notcoinSkin', 'allowed');
+                document.getElementById('buySkin').style.display = 'none'
+                document.getElementById('skin1').classList.remove('not_allowed')
+            } catch(error){
+                Telegram.WebApp.showPopup({
+                    title: 'Error',
+                    message: 'Transaction failed',
+                    buttons: [
+                        {id: 'ok', type: 'ok', text: 'OK'}
+                    ]
+                })
+            }
+        }
+
+        //buy notcoin skin
+        document.getElementById('buySkin').addEventListener('click', sendTonForSkin1);
+
         coinSkin2.addEventListener('click', ()=>{
             localStorage.setItem('coinSkin', 'skin2');
             document.getElementById('coin').classList.add('skin2');

@@ -9,7 +9,7 @@ body{
     align-items: center;
     height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #212121;
+    background-color: #1E2337;
     color: white;
     flex-direction: column;
 }
@@ -35,6 +35,7 @@ body{
     padding: 0;
     margin: 0;
     background: linear-gradient(180deg, #121212, #212121);
+    /* background: linear-gradient(180deg, black, black, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF); */
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -479,9 +480,34 @@ body{
     margin-top: 10px;
     font-family: sans-serif;
     box-shadow: 2px 5px 10px rgb(0, 0, 0, 0.2);
+    position: relative;
 }
 .setting .change_coin.selected{
     outline: 1px solid #FFFFFF;
+}
+.setting .change_coin.not_allowed::after{
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(1.5px);
+}
+.buySkin{
+    position: absolute;
+    background-color: transparent;
+    color: #FFFFFF;
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    background: linear-gradient(to left, #2D83EC, #1AC9FF);
+    padding: 5px 20px;
+    border: 0;
+    outline: 0;
+    border-radius: 20px;
+    z-index: 10;
+    right: 10%;
 }
 .refBox{
     position: absolute;
