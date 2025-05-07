@@ -218,17 +218,8 @@
             h1.textContent = (coins).toLocaleString('en-US')
         }
 
-        async function coinClick() {
-            coins++
-            coins++
-            coins++
-            coins++
-            coins++
-            coins++
-            coins++
-            coins++
-            coins++
-            coins++
+        async function coinClick(fingersCount) {
+            coins += fingersCount
             
             localStorage.setItem('coins', coins)
 
@@ -238,7 +229,7 @@
             const coinBox = document.getElementById('coin')
             const coinEffect = document.createElement('div')
             coinEffect.classList.add('coinEffect')
-            coinEffect.textContent = '+10'
+            coinEffect.textContent = `+${fingersCount}`
 
             const rect = coinBox.getBoundingClientRect()
             const x = event.clientX - rect.left
@@ -254,13 +245,10 @@
             }, 2000)
         }
 
-        document.getElementById('coin').addEventListener("click", coinClick)
-        // document.getElementById('coin').addEventListener("touchstart", (e)=>{
-        //     e.preventDefault();
-        //     const numbOfFingers = e.touches.length;
-        //     console.log(numbOfFingers);
-            
-        // })
+        document.getElementById('coin').addEventListener('touchstart', (e) => {
+            const touches = e.touches.length;
+            coinClick(touches);
+        })
 
         let interval = null
 
