@@ -27,12 +27,13 @@
                 <img src="https://i.gifer.com/5Mz4.gif" width="150" alt="Fire gif">
                 <h1>This page is under development. Dev is cooking...</h1>
             </div> -->
+            <h1>Tasks</h1>
     
             <div class="taskBox">
-                <h2>Daily tasks</h2>
+                <h2><i class="bi bi-calendar-range"></i> Daily tasks</h2>
     
                 <div class="task">
-                    <p>Daily check-in</p>
+                    <p><i class="bi bi-gift"></i> Daily check-in</p>
     
                     <button class="followBtn" id="claim" onclick="launchConfetti()">Claim +5k</button>
                 </div>
@@ -43,25 +44,20 @@
                     <p>Follow to channel</p>
     
                     <button class="followBtn" id="followBtn">Follow</button>
-                </div>
-                <div class="task">
-                    <p>Follow to channel</p>
-    
-                    <button class="followBtn" id="followBtn">Follow</button>
                 </div> -->
     
-                <h2>Invite others</h2>
+                <h2><i class="bi bi-link-45deg"></i> Invite others</h2>
                 <div class="task">
-                    <p>Invite your friends</p>
+                    <p><i class="bi bi-person-plus"></i> Invite your friends</p>
     
                     <span>
                         <button id="refBtn">Share</button>
                     </span>
                 </div>
     
-                <h2>TON transaction</h2>
+                <h2><i class="bi bi-wallet"></i> TON transaction</h2>
                 <div class="task">
-                    <p>Send 0.05 TON</p>
+                    <p><i class="bi bi-clock-history"></i> Send 0.05 TON</p>
     
                     <button id="sendTonBtn">Complete</button>
                 </div>
@@ -87,6 +83,8 @@
             <div class="coin" id="coin">
                  <p id="tapMe" style="color: grey;">Tap</p>
             </div>
+
+            <!-- <button class="coinBtn">START</button> -->
 
             <!-- <img src="notcoin.png" class="coin" id="coin" alt=""> -->
     
@@ -131,7 +129,13 @@
             <div class="walletBox">
                 <h1>CONNECT TON WALLET</h1>
     
-                <div id="ton-connect"></div>
+                <!-- <div id="ton-connect"></div> -->
+                <div id="custom-ton-connect" class="tonConnect"><span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" fill="black">
+                      <path d="M14.996 2L2 6.73l13 21.27L28 6.73 14.996 2zm0 3.012l9.323 3.29L15 23.444 5.684 8.3 14.996 5.01z"/>
+                    </svg>
+                  </span>
+                  Connect Wallet</div>
             </div>
             <br>
             <div class="infoBox">
@@ -306,13 +310,30 @@
         // document.getElementById('coin').addEventListener("mouseover", stop)
 
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-            manifestUrl: 'https://utopialf.github.io/trollcoin/tonconnect-manifest.json',
-            buttonRootId: 'ton-connect'
+            manifestUrl: 'https://utopialf.github.io/trollcoin/tonconnect-manifest.json'
+            // buttonRootId: 'ton-connect',
+            // uiPreferences: {
+            //     borderRadius: 's',
+            //     colorsSet: 'PURPLE'
+            // }
         });
 
         tonConnectUI.uiOptions = {
             twaReturnUrl: 'https://t.me/trollcoin_test_bot'
         };
+
+        document.getElementById('custom-ton-connect').addEventListener('click', ()=>{
+            tonConnectUI.openModal();
+        })
+        tonConnectUI.onStatusChange(wallet => {
+        const button = document.getElementById('ton-custom-button');
+        if (wallet) {
+            button.textContent = `${wallet.account.address.slice(0, 6)}...`;
+        } else {
+            button.textContent = 'Connect Wallet';
+        }
+        });
+
 
         // const walletAddress = tonConnect.account?.address;
         // if(walletAddress){
@@ -340,7 +361,7 @@
                     ]
                 })
                 localStorage.setItem('sendTon', 'completed')
-                document.getElementById('sendTonBtn').style.background = '#0098EA'
+                document.getElementById('sendTonBtn').style.background = '#1E2337'
                 document.getElementById('sendTonBtn').style.color = 'white'
                 document.getElementById('sendTonBtn').textContent = 'Completed'
 
@@ -359,7 +380,7 @@
         }
 
         if(localStorage.getItem('sendTon') === 'completed'){
-            document.getElementById('sendTonBtn').style.background = '#0098EA'
+            document.getElementById('sendTonBtn').style.background = '#1E2337'
             document.getElementById('sendTonBtn').style.color = 'white'
             document.getElementById('sendTonBtn').innerHTML = 'Completed <i class="bi bi-check-all"></i>'
             document.getElementById('sendTonBtn').disabled = true;
@@ -480,7 +501,7 @@
                 const result = await tonConnectUI.sendTransaction(transaction);
                 Telegram.WebApp.showPopup({
                     title: 'Success',
-                    message: 'You bought a new skin!',
+                    message: 'You bought a new skin! Pls refresh the mini-app',
                     buttons: [
                         {id: 'ok', type: 'ok', text: 'Done'}
                     ]
