@@ -34,7 +34,7 @@ body{
     width: 100%;
     padding: 0;
     margin: 0;
-    background: linear-gradient(180deg, #121212, #212121);
+    background: linear-gradient(to bottom, #474747, #2E2E2E);
     /* background: linear-gradient(180deg, black, black, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF); */
     height: 100vh;
     display: flex;
@@ -52,7 +52,7 @@ body{
     display: none;
 }
 .taskBox{
-    width: 95vw;
+    width: 92vw;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -63,12 +63,13 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #2E2E2E;
+    /* background-color: #2E2E2E; */
+    background-color: #CFAF77;
     height: 60px;
     align-items: center;
     padding: 10px;
     box-sizing: border-box;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 10px;
     /* box-shadow: 0px 5px 5px rgb(0, 0, 0, 0.3); */
     box-shadow: 2px 5px 10px rgb(0, 0, 0, 0.3);
@@ -79,12 +80,12 @@ body{
     font-weight: 700;
 }
 .taskBox .task button{
-    padding: 7px 30px;
+    padding: 9px 30px;
     font-size: 0.9rem;
     border: none;
     outline: none;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 2px 5px 5px rgb(0, 0, 0, 0.3);
     font-weight: 400;
 }
@@ -115,7 +116,8 @@ body{
 }
 .top div{
     width: max-content;
-    background-color: #2E2E2E;
+    /* background-color: #2E2E2E; */
+    background-color: #CFAF77;
     padding: 0px 40px;
     border-radius: 5px;
     height: 50px;
@@ -322,12 +324,14 @@ body{
     bottom: 0;
     width: 100%;
     height: 60px;
-    background-color: #2E2E2E;
+    /* background-color: #2E2E2E; */
+    background-color: #cdac73;
     display: flex;
     align-items: center;
     justify-content: space-around;
     box-sizing: border-box;
     padding: 5px 20px;
+    border-radius: 10px 10px 0px 0px;
 }
 .menu div{
     width: 25%;
@@ -341,8 +345,8 @@ body{
 }
 /* .menu div:active{
     transform: scale(1.5);
-} */
-.menu div p{
+    } */
+    .menu div p{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -408,7 +412,7 @@ body{
 }
 
 .tasks-btn, .main-btn, .profile-btn, .stat-btn{
-    color: grey;
+    color: #121212;
     font-size: 1.5rem;
 }
 
@@ -501,13 +505,13 @@ body{
     font-family: sans-serif;
     font-weight: 500;
     font-size: 1.1rem;
-    background: linear-gradient(to left, #2D83EC, #1AC9FF);
+    background: linear-gradient(to left, #1E2337, #121212);
     padding: 5px 20px;
     border: 0;
     outline: 0;
-    border-radius: 20px;
+    border-radius: 10px;
     z-index: 10;
-    right: 10%;
+    right: 5%;
 }
 .refBox{
     position: absolute;
