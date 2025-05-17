@@ -225,7 +225,7 @@
             localStorage.setItem('coins', 0)
             document.getElementById('h1').innerText = 0
         } else {
-            h1.textContent = (coins).toLocaleString('en-US')
+            h1.textContent = (coins).toLocaleString('en-US') + ' COINS'
         }
 
         async function coinClick() {
@@ -252,7 +252,7 @@
             
             localStorage.setItem('coins', coins)
 
-            h1.textContent = (coins).toLocaleString('en-US')
+            h1.textContent = (coins).toLocaleString('en-US') + ' COINS'
 
             //effects
             const coinBox = document.getElementById('coin')

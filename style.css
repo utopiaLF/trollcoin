@@ -64,8 +64,7 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* background-color: #2E2E2E; */
-    background-color: #CFAF77;
+    background-color: #212121;
     height: 60px;
     align-items: center;
     padding: 10px;
@@ -86,7 +85,7 @@ body{
     font-size: 0.9rem;
     border: none;
     outline: none;
-    background-color: white;
+    background-color: #CFAF77;
     border-radius: 10px;
     box-shadow: 2px 5px 5px rgb(0, 0, 0, 0.3);
     font-weight: 400;
@@ -118,8 +117,7 @@ body{
 }
 .top div{
     width: max-content;
-    /* background-color: #2E2E2E; */
-    background-color: #CFAF77;
+    background-color: #2E2E2E;
     padding: 0px 40px;
     border-radius: 5px;
     height: 50px;
@@ -337,9 +335,7 @@ body{
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 60px;
-    /* background-color: #2E2E2E; */
-    background-color: #cdac73;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -349,13 +345,16 @@ body{
 }
 .menu div{
     width: 25%;
-    height: 70%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
     padding: 0px 5px;
     transition: all 0.2s ease;
+    outline: 1px solid #474747;
+    margin: 0px 5px;
+    background-color: #212121;
 }
 /* .menu div:active{
     transform: scale(1.5);
@@ -437,26 +436,11 @@ body{
 }
 
 .tasks-btn, .main-btn, .profile-btn, .stat-btn{
-    color: #121212;
+    color: grey;
     font-size: 1.5rem;
 }
 
-.tasks-btn.active{
-    color: #FFFFFF;
-    text-shadow: 0px 0px 5px #FFFFFF;
-    font-size: 1.5rem;
-}
-.main-btn.active{
-    color: #FFFFFF;
-    text-shadow: 0px 0px 5px #FFFFFF;
-    font-size: 1.5rem;
-}
-.profile-btn.active{
-    color: #FFFFFF;
-    text-shadow: 0px 0px 5px #FFFFFF;
-    font-size: 1.5rem;
-}
-.stat-btn.active{
+.tasks-btn.active, .main-btn.active, .profile-btn.active, .stat-btn.active{
     color: #FFFFFF;
     text-shadow: 0px 0px 5px #FFFFFF;
     font-size: 1.5rem;
