@@ -117,25 +117,51 @@
             </div>
         </div>
         <div class="refBox" id="refBox">
-            <h1>This feature is not ready yet</h1>
-            <button id="okref">OK</button>
+            <h1 id="refLink">This feature is not ready yet</h1>
+            <button id="okref">Close</button>
         </div>
 
         <div class="stat" id="stat">
-            <h1>There's nothing here yet</h1>
+            <h1><i class="bi bi-clipboard-data"></i> Top users</h1>
+
+            <div class="topUser">
+                <h3><i class="bi bi-person-fill"></i> Username</h3>
+                <p>LVL: Broke</p>
+            </div>
+            <div class="topUser">
+                <h3><i class="bi bi-person-fill"></i> Username</h3>
+                <p>LVL: Broke</p>
+            </div>
+            <div class="topUser">
+                <h3><i class="bi bi-person-fill"></i> Username</h3>
+                <p>LVL: Broke</p>
+            </div>
+            <div class="topUser">
+                <h3><i class="bi bi-person-fill"></i> Username</h3>
+                <p>LVL: Broke</p>
+            </div>
+            <div class="topUser">
+                <h3><i class="bi bi-person-fill"></i> Username</h3>
+                <p>LVL: Broke</p>
+            </div>
+            <div class="topUser">
+                <h3><i class="bi bi-person-fill"></i> Username</h3>
+                <p>LVL: Broke</p>
+            </div>
+            
         </div>
         
         <div class="profile" id="profile">
             <div class="walletBox">
                 <h1>CONNECT TON WALLET</h1>
     
-                <!-- <div id="ton-connect"></div> -->
-                <div id="custom-ton-connect" class="tonConnect"><span class="icon">
+                <div id="ton-connect"></div>
+                <!-- <div id="custom-ton-connect" class="tonConnect"><span class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" fill="black">
                       <path d="M14.996 2L2 6.73l13 21.27L28 6.73 14.996 2zm0 3.012l9.323 3.29L15 23.444 5.684 8.3 14.996 5.01z"/>
                     </svg>
                   </span>
-                  Connect Wallet</div>
+                  Connect Wallet</div> -->
             </div>
             <br>
             <div class="infoBox">
@@ -148,7 +174,7 @@
                 <i class="bi bi-ui-checks"></i>
             </div>
             <div id="main-btn" class="main-btn">
-                <i class="bi bi-coin"></i>
+                <i class="bi bi-house"></i>
             </div>
             <div id="stat-btn" class="stat-btn">
                 <i class="bi bi-bar-chart"></i>
@@ -161,8 +187,15 @@
 
     <script>
         const tg = window.Telegram.WebApp;
+        tg.ready();
         const user = tg.initDataUnsafe.user;
-        const token = '7810844270:AAFSpHIvkn6biL0hcbaDJaiOP-F25eEWoSQ'
+
+        if(tg) {
+            document.querySelector('.warning').style.display = 'flex'
+            document.querySelector('.content').style.display = 'none'
+        }
+
+        const token = ''
 
         document.getElementById('main-btn').classList.add('one')
         
@@ -310,29 +343,16 @@
         // document.getElementById('coin').addEventListener("mouseover", stop)
 
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-            manifestUrl: 'https://utopialf.github.io/trollcoin/tonconnect-manifest.json'
-            // buttonRootId: 'ton-connect',
-            // uiPreferences: {
-            //     borderRadius: 's',
-            //     colorsSet: 'PURPLE'
-            // }
+            manifestUrl: 'https://utopialf.github.io/trollcoin/tonconnect-manifest.json',
+            buttonRootId: 'ton-connect',
+            uiPreferences: {
+                borderRadius: 's',
+            }
         });
 
         tonConnectUI.uiOptions = {
             twaReturnUrl: 'https://t.me/trollcoin_test_bot'
         };
-
-        document.getElementById('custom-ton-connect').addEventListener('click', ()=>{
-            tonConnectUI.openModal();
-        })
-        tonConnectUI.onStatusChange(wallet => {
-        const button = document.getElementById('ton-custom-button');
-        if (wallet) {
-            button.textContent = `${wallet.account.address.slice(0, 6)}...`;
-        } else {
-            button.textContent = 'Connect Wallet';
-        }
-        });
 
 
         // const walletAddress = tonConnect.account?.address;
@@ -570,6 +590,8 @@
             coinSkin3.classList.add('selected');
             document.getElementById('tapMe').style.display = 'none'
         }
+
+        document.getElementById('refLink').textContent = `https://t.me/trollcoin_test_bot?start=${user.id}`
     </script>
 </body>
 </html>
