@@ -291,7 +291,7 @@
         let claim1kBtn = document.getElementById('claim1k')
 
         let dayCount = localStorage.getItem('dayCount') || 0;
-        if(todayCheck !== 0){
+        if(todayCheck == 0){
             giftDaily.classList.add('active');
 
             document.getElementById('dayCount').textContent = `Day ${dayCount}`
