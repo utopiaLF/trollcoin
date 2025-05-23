@@ -34,7 +34,7 @@
                     <p id="level"> Level: King</p>
                 </div>
                 <div>
-                    <img src="troll-face-png-picture.png" width="40" alt="">
+                    <img src="troll-face-png-picture.png" width="60" alt="">
                     <h1 id="h1">999 $TCOIN</h1>
                 </div>
             </div>
@@ -88,28 +88,16 @@
             <h1><i class="bi bi-clipboard-data"></i> Top users</h1>
 
             <div class="topUser">
-                <h3><i class="bi bi-person-fill"></i> Username</h3>
-                <p>LVL: Broke</p>
+                <h3><i class="bi bi-person-fill"></i> utopia_lf</h3>
+                <p>Coins: 5,000,000</p>
             </div>
             <div class="topUser">
-                <h3><i class="bi bi-person-fill"></i> Username</h3>
-                <p>LVL: Broke</p>
+                <h3><i class="bi bi-person-fill"></i> sheikh_brawl_stars</h3>
+                <p>Coins: 5,000,000</p>
             </div>
             <div class="topUser">
-                <h3><i class="bi bi-person-fill"></i> Username</h3>
-                <p>LVL: Broke</p>
-            </div>
-            <div class="topUser">
-                <h3><i class="bi bi-person-fill"></i> Username</h3>
-                <p>LVL: Broke</p>
-            </div>
-            <div class="topUser">
-                <h3><i class="bi bi-person-fill"></i> Username</h3>
-                <p>LVL: Broke</p>
-            </div>
-            <div class="topUser">
-                <h3><i class="bi bi-person-fill"></i> Username</h3>
-                <p>LVL: Broke</p>
+                <h3><i class="bi bi-person-fill"></i> justperson010</h3>
+                <p>Coins: 5,000,000</p>
             </div>
             
         </div>
@@ -231,7 +219,7 @@
                 coins += 5000;
                 localStorage.setItem('coins', coins);
                 localStorage.setItem(`${day}-${month}-${year}`, 'yes');
-                h1.textContent = coins.toLocaleString('en-US');
+                h1.textContent = coins.toLocaleString('en-US') + ` $TCOIN`;
 
                 document.getElementById('claim').style.background = '#1E2337'
                 document.getElementById('claim').style.color = 'white'
