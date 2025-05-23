@@ -69,14 +69,14 @@
                     <h4><i class="bi bi-telegram"></i> Follow channels</h4>
         
                     <div class="task">
-                        <p>Channel 1</p>
+                        <p>Durov's channel</p>
         
-                        <button class="followBtn" id="followBtn">Follow</button>
+                        <button class="followBtn" id="followBtn">Go</button>
                     </div>
                     <div class="task">
-                        <p>Channel 2</p>
+                        <p>Notcoin community</p>
         
-                        <button class="followBtn" id="followBtn">Follow</button>
+                        <button class="followBtn" id="followBtn">Go</button>
                     </div>
                     <p class="taskContext">This feature isn't ready yet</p>
         
@@ -124,7 +124,6 @@
             <!-- <div id="ton-connect"></div> -->
         </div>
     </div>
-
     <script>
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://utopialf.github.io/trollcoin/tonconnect-manifest.json',
@@ -158,8 +157,23 @@
         let coins = Number(localStorage.getItem('coins'))
         let h1 = document.getElementById('h1')
         let count = 0
-        count = Math.floor(coins * 0.8)
-        
+        count = Math.floor(coins * 0.90)
+
+        function addCoins(amount) {
+            let start = +h1.textContent.replace(/\D/g, '');
+            let end = start + amount;
+            let startTime = performance.now();
+
+            function update(now) {
+                let progress = Math.min((now - startTime) / 1000, 1); // 1s duration
+                let value = Math.floor(start + (end - start) * progress);
+                h1.textContent = value.toLocaleString('en-US') + ' $TCOIN';
+                if (progress < 1) requestAnimationFrame(update);
+            }
+
+            requestAnimationFrame(update);
+        }
+
         if(!coins) {
             localStorage.setItem('coins', 0)
             document.getElementById('h1').innerText = 0
@@ -221,7 +235,13 @@
 
         for (let i = 0; i < followBtn.length; i++) {
             followBtn[i].addEventListener('click', ()=>{
-                window.location.href = channels[i]
+                Telegram.WebApp.showPopup({
+                    title: 'Nigga',
+                    message: "This feature isn't ready yet.",
+                    buttons: [
+                        {id: 'ok', type: 'ok', text: 'OK'}
+                    ]
+                })
             })
         }
 
@@ -243,10 +263,10 @@
                 document.getElementById('claim').innerHTML = 'Completed <i class="bi bi-check-all"></i>'
                 document.getElementById('claim').disabled = true;
 
-                fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${user.id}&text=You’ve received 5k coins! Enjoy your rewards!`)
-                .then(response => response.json())
-                .then(data => console.log('Message sent successfully'))
-                .catch(err => console.error("Some error" + err))
+                // fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${user.id}&text=You’ve received 5k coins! Enjoy your rewards!`)
+                // .then(response => response.json())
+                // .then(data => console.log('Message sent successfully'))
+                // .catch(err => console.error("Some error" + err))
             } else {
                 Telegram.WebApp.showPopup({
                     title: 'Error',
@@ -275,22 +295,25 @@
             });
         }
 
-        if(coins < 100){
+        function updateLevel(){
+            if(coins < 100){
             document.getElementById('level').textContent = 'Level: Brokie'
-        } else if(coins > 100 && coins < 500){
-            document.getElementById('level').textContent = 'Level: Newbie'
-        } else if(coins > 500 && coins < 1000){
-            document.getElementById('level').textContent = 'Level: Player'
-        } else if(coins > 1000 && coins < 10000){
-            document.getElementById('level').textContent = 'Level: Master'
-        } else if(coins > 10000){
-            document.getElementById('level').textContent = 'Level: King'
+            } else if(coins > 100 && coins < 500){
+                document.getElementById('level').textContent = 'Level: Newbie'
+            } else if(coins > 500 && coins < 1000){
+                document.getElementById('level').textContent = 'Level: Player'
+            } else if(coins > 1000 && coins < 10000){
+                document.getElementById('level').textContent = 'Level: Master'
+            } else if(coins > 10000){
+                document.getElementById('level').textContent = 'Level: King'
+            }
         }
+        updateLevel()
 
         let giftDaily = document.getElementById('gift')
         let claim1kBtn = document.getElementById('claim1k')
 
-        let dayCount = localStorage.getItem('dayCount') || 1;
+        let dayCount = localStorage.getItem('daysCount') || 1;
         if(dayCount == 1){
             giftDaily.classList.add('active');
 
@@ -298,14 +321,19 @@
         }
         
         claim1kBtn.addEventListener('click', ()=>{
-            coins += 1000;
+            let todayCoins = (dayCount * 1000);
+            coins += todayCoins;
+            console.log(todayCoins);
+            
             localStorage.setItem('coins', coins);
             dayCount++
-            localStorage.setItem('dayCount', dayCount)
+            localStorage.setItem('daysCount', dayCount)
             localStorage.setItem(`${day}-${month}-${year}`, 'yes');
-            h1.textContent = coins.toLocaleString('en-US') + ` $TCOIN`;
+            // h1.textContent = coins.toLocaleString('en-US') + ` $TCOIN`;
             
             giftDaily.classList.remove('active');
+            updateLevel()
+            addCoins(todayCoins)
         })
     </script>
 </body>
