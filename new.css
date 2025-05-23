@@ -50,7 +50,7 @@ body{
 }
 .gift p{
     font-family: "Oxanium", sans-serif;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 .gift button{
     width: 70%;
@@ -64,7 +64,7 @@ body{
     font-size: 1.3rem;
     border-radius: 20px;
     animation: borderAnime 1.5s infinite;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 @keyframes borderAnime{
     0%{
@@ -153,6 +153,7 @@ body{
     z-index: 3;
     backdrop-filter: blur(1px);
     background: linear-gradient(to top right, #1a1a1a, #2e2e2e, #CFAF77);
+    padding-top: 40px;
 }
 .home .myCoins{
     width: 100%;
