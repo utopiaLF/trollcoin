@@ -6,10 +6,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.12.1/font/bootstrap-icons.min.css">
     <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
     <link rel="stylesheet" href="new.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <title>Trollcoin - New UI</title>
 </head>
 <body>
     <div class="content">
+
+        <div class="gift" id="gift">
+            <img src="bonus.png" width="120" alt="">
+            <h1>Claim your daily reward</h1>
+
+            <p>You can earn +1,000 $TCOIN daily, just use our mini-app daily!</p>
+
+            <h2 id="dayCount"></h2>
+
+            <button id="claim1k" onclick="launchConfetti()">CLAIM +1K</button>
+        </div>
+
         <div class="menu">
             <div id="main-btn" class="main-btn">
                 <i class="bi bi-house"></i>
@@ -19,22 +32,23 @@
                 <i class="bi bi-bar-chart"></i>
                 <p>Leaderboard</p>
             </div>
-            <div id="profile-btn" class="profile-btn">
+            <!-- <div id="profile-btn" class="profile-btn">
                 <i class="bi bi-wallet2"></i>
                 <p>Wallet</p>
-            </div>
+            </div> -->
         </div>
         <!-- main page -->
         <div class="home" id="main">
-            <div class="top"> 
-            </div>
+            <!-- <div class="top"> 
+            </div> -->
             <div class="myCoins">
-                <div>
-                    <i class="bi bi-trophy"></i>
-                    <p id="level"> Level: King</p>
+                <div class="topBar">
+                    <div id="ton-connect"></div>
+                    <p id="level">Level: King</p>
                 </div>
+
                 <div>
-                    <img src="troll-face-png-picture.png" width="60" alt="">
+                    <img src="main.png" width="180" alt="Trollcoin">
                     <h1 id="h1">999 $TCOIN</h1>
                 </div>
             </div>
@@ -50,6 +64,7 @@
         
                         <button class="followBtn" id="claim" onclick="launchConfetti()">Claim</button>
                     </div>
+                    <p class="taskContext">You can earn +500 $TCOIN daily</p>
                     
                     <h4><i class="bi bi-telegram"></i> Follow channels</h4>
         
@@ -63,6 +78,7 @@
         
                         <button class="followBtn" id="followBtn">Follow</button>
                     </div>
+                    <p class="taskContext">This feature isn't ready yet</p>
         
                     <h4><i class="bi bi-link-45deg"></i> Invite others</h4>
                     <div class="task">
@@ -72,6 +88,7 @@
                             <button id="refBtn">Share</button>
                         </span>
                     </div>
+                    <p class="taskContext">This function is under development</p>
         
                     <h4><i class="bi bi-wallet"></i> TON transaction</h4>
                     <div class="task">
@@ -79,7 +96,7 @@
         
                         <button id="sendTonBtn">Complete</button>
                     </div>
-                    <!-- <p>Send 0.05TON and earn +1mln Trollcoins</p> -->
+                    <p class="taskContext">Send 0.05TON and earn +1mln Trollcoins <br><br>Note: Pls, connect your wallet before making a transaction</p>
                 </div>
             </div>
         </div>
@@ -88,15 +105,15 @@
             <h1><i class="bi bi-clipboard-data"></i> Top users</h1>
 
             <div class="topUser">
-                <h3><i class="bi bi-person-fill"></i> utopia_lf</h3>
+                <h4><i class="bi bi-person-fill"></i> utopia_lf</h4>
                 <p>Coins: 5,000,000</p>
             </div>
             <div class="topUser">
-                <h3><i class="bi bi-person-fill"></i> sheikh_brawl_stars</h3>
+                <h4><i class="bi bi-person-fill"></i> unknown</h4>
                 <p>Coins: 5,000,000</p>
             </div>
             <div class="topUser">
-                <h3><i class="bi bi-person-fill"></i> justperson010</h3>
+                <h4><i class="bi bi-person-fill"></i> justperson010</h4>
                 <p>Coins: 5,000,000</p>
             </div>
             
@@ -104,7 +121,7 @@
 
         <div class="setting wallet" id="profile">
             <h1>CONNECT TON WALLET</h1>
-            <div id="ton-connect"></div>
+            <!-- <div id="ton-connect"></div> -->
         </div>
     </div>
 
@@ -132,11 +149,11 @@
             document.getElementById('profile').style.visibility = 'hidden'
             document.getElementById('stat').style.visibility = 'visible'
         })
-        document.getElementById('profile-btn').addEventListener('click', ()=>{
-            document.getElementById('main').style.visibility = 'hidden'
-            document.getElementById('stat').style.visibility = 'hidden'
-            document.getElementById('profile').style.visibility = 'visible'
-        })
+        // document.getElementById('profile-btn').addEventListener('click', ()=>{
+        //     document.getElementById('main').style.visibility = 'hidden'
+        //     document.getElementById('stat').style.visibility = 'hidden'
+        //     document.getElementById('profile').style.visibility = 'visible'
+        // })
 
         let coins = Number(localStorage.getItem('coins'))
         let h1 = document.getElementById('h1')
@@ -216,7 +233,7 @@
             let dailyCheckIn = localStorage.getItem(`${day}-${month}-${year}`) || 0;
 
             if(dailyCheckIn == 0) {
-                coins += 5000;
+                coins += 500;
                 localStorage.setItem('coins', coins);
                 localStorage.setItem(`${day}-${month}-${year}`, 'yes');
                 h1.textContent = coins.toLocaleString('en-US') + ` $TCOIN`;
@@ -269,6 +286,27 @@
         } else if(coins > 10000){
             document.getElementById('level').textContent = 'Level: King'
         }
+
+        let giftDaily = document.getElementById('gift')
+        let claim1kBtn = document.getElementById('claim1k')
+
+        let dayCount = localStorage.getItem('dayCount') || 0;
+        if(todayCheck !== 0){
+            giftDaily.classList.add('active');
+
+            document.getElementById('dayCount').textContent = `Day ${dayCount}`
+        }
+        
+        claim1kBtn.addEventListener('click', ()=>{
+            coins += 1000;
+            localStorage.setItem('coins', coins);
+            dayCount++
+            localStorage.setItem('dayCount', dayCount)
+            localStorage.setItem(`${day}-${month}-${year}`, 'yes');
+            h1.textContent = coins.toLocaleString('en-US') + ` $TCOIN`;
+            
+            giftDaily.classList.remove('active');
+        })
     </script>
 </body>
 </html>
