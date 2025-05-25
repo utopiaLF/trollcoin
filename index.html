@@ -126,9 +126,9 @@
         </div>
     </div>
     <script>
-        // const tg = window.Telegram.WebApp;
-        // tg.ready();
-        // const user = tg.initDataUnsafe.user;
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+        const user = tg.initDataUnsafe.user;
         
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://utopialf.github.io/trollcoin/tonconnect-manifest.json',
@@ -318,11 +318,12 @@
         let giftDaily = document.getElementById('gift')
         let claim1kBtn = document.getElementById('claim1k')
 
-        let dayCount = localStorage.getItem('dayCount') || 0;
+        let dayCount = localStorage.getItem('dayCount') || 1;
+        let lastClaimed = localStorage.getItem('lastClaimed');
+        let todayIs = new Date().toDateString();
 
-        if(dayCount == 0){
+        if(lastClaimed !== today ){
             giftDaily.classList.add('active');
-
             document.getElementById('dayCount').textContent = `Day ${dayCount}`
         }
         
@@ -334,12 +335,12 @@
             localStorage.setItem('coins', coins);
             dayCount++
             localStorage.setItem('dayCount', dayCount)
-            localStorage.setItem(`${day}-${month}-${year}`, 'yes');
-            // h1.textContent = coins.toLocaleString('en-US') + ` $TCOIN`;
+            localStorage.setItem('lastClaimed', today);
             
             giftDaily.classList.remove('active');
             updateLevel()
             addCoins(todayCoins)
+
         })
     </script>
 </body>
