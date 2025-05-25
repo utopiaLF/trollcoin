@@ -17,7 +17,7 @@
             <img src="bonus.png" width="120" alt="">
             <h1>Claim your daily reward</h1>
 
-            <p>You can earn +1,000 $TCOIN daily, just use our mini-app daily!</p>
+            <p>Earn a $TCOIN bonus every day by using our mini-app!</p>
 
             <h2 id="dayCount"></h2>
 
@@ -49,8 +49,14 @@
                 </div>
 
                 <div>
-                    <img src="main.png" width="180" alt="Trollcoin">
-                    <h1 id="h1">999 $TCOIN</h1>
+                    <img src="main.png" width="160" alt="Trollcoin">
+                    <h1 id="h1">0 $TCOIN</h1>
+
+                    <div class="userMiniInfos">
+                        <h4>Tasks: 5</h4>
+                        <h4>Ref: 0</h4>
+                        <h4 id="toDay">Day</h4>
+                    </div>
                 </div>
             </div>
 
@@ -126,9 +132,9 @@
         </div>
     </div>
     <script>
-        const tg = window.Telegram.WebApp;
-        tg.expand();
-        const user = tg.initDataUnsafe.user;
+        // const tg = window.Telegram.WebApp;
+        // tg.expand();
+        // const user = tg.initDataUnsafe.user;
         
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://utopialf.github.io/trollcoin/tonconnect-manifest.json',
@@ -199,13 +205,14 @@
         async function sendTon() {
             try{
                 const result = await tonConnectUI.sendTransaction(transaction);
-                Telegram.WebApp.showPopup({
-                    title: 'Success',
-                    message: 'Transaction sent!',
-                    buttons: [
-                        {id: 'ok', type: 'ok', text: 'Done'}
-                    ]
-                })
+                // Telegram.WebApp.showPopup({
+                //     title: 'Success',
+                //     message: 'Transaction sent!',
+                //     buttons: [
+                //         {id: 'ok', type: 'ok', text: 'Done'}
+                //     ]
+                // })
+                alert('Transaction sent!')
                 localStorage.setItem('sendTon', 'completed')
                 document.getElementById('sendTonBtn').style.background = '#1E2337'
                 document.getElementById('sendTonBtn').style.color = 'white'
@@ -215,13 +222,14 @@
                 localStorage.setItem('coins', coins)
                 h1.textContent = coins
             } catch(error){
-                Telegram.WebApp.showPopup({
-                    title: 'Error',
-                    message: 'Transaction failed',
-                    buttons: [
-                        {id: 'ok', type: 'ok', text: 'OK'}
-                    ]
-                })
+                // Telegram.WebApp.showPopup({
+                //     title: 'Error',
+                //     message: 'Transaction failed',
+                //     buttons: [
+                //         {id: 'ok', type: 'ok', text: 'OK'}
+                //     ]
+                // })
+                alert('Transaction failed')
             }
         }
 
@@ -240,13 +248,14 @@
 
         for (let i = 0; i < followBtn.length; i++) {
             followBtn[i].addEventListener('click', ()=>{
-                Telegram.WebApp.showPopup({
-                    title: 'Nigga',
-                    message: "This feature isn't ready yet.",
-                    buttons: [
-                        {id: 'ok', type: 'ok', text: 'OK'}
-                    ]
-                })
+                // Telegram.WebApp.showPopup({
+                //     title: 'Nigga',
+                //     message: "This feature isn't ready yet.",
+                //     buttons: [
+                //         {id: 'ok', type: 'ok', text: 'OK'}
+                //     ]
+                // })
+                // alert('This feature isnt ready yet.')
             })
         }
 
@@ -273,13 +282,14 @@
                 // .then(data => console.log('Message sent successfully'))
                 // .catch(err => console.error("Some error" + err))
             } else {
-                Telegram.WebApp.showPopup({
-                    title: 'Error',
-                    message: 'You have already claimed your reward. Come back tomorrow!',
-                    buttons: [
-                        {id: 'ok', type: 'ok', text: 'OK'}
-                    ]
-                })
+                // Telegram.WebApp.showPopup({
+                //     title: 'Error',
+                //     message: 'You have already claimed your reward. Come back tomorrow!',
+                //     buttons: [
+                //         {id: 'ok', type: 'ok', text: 'OK'}
+                //     ]
+                // })
+                alert('You have already claimed your reward. Come back tomorrow!')
             }
         })
 
@@ -321,11 +331,16 @@
         let dayCount = localStorage.getItem('dayCount') || 1;
         let lastClaimed = localStorage.getItem('lastClaimed');
         let todayIs = new Date().toDateString();
+        console.log(todayIs);
 
-        if(lastClaimed !== today ){
+        if(lastClaimed !== todayIs){
             giftDaily.classList.add('active');
             document.getElementById('dayCount').textContent = `Day ${dayCount}`
+            let todayCoins = (dayCount * 1000);
+            claim1kBtn.textContent = `CLAIM +${todayCoins.toLocaleString('en-US')}`
         }
+
+        document.getElementById('toDay').textContent = `Day: ${dayCount}`
         
         claim1kBtn.addEventListener('click', ()=>{
             let todayCoins = (dayCount * 1000);
@@ -335,12 +350,11 @@
             localStorage.setItem('coins', coins);
             dayCount++
             localStorage.setItem('dayCount', dayCount)
-            localStorage.setItem('lastClaimed', today);
+            localStorage.setItem('lastClaimed', todayIs);
             
             giftDaily.classList.remove('active');
             updateLevel()
             addCoins(todayCoins)
-
         })
     </script>
 </body>
