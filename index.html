@@ -12,7 +12,6 @@
 </head>
 <body>
     <div class="content">
-
         <div class="gift" id="gift">
             <img src="bonus.png" width="120" alt="">
             <h1>Claim your daily reward</h1>
@@ -103,7 +102,7 @@
         
                         <button id="sendTonBtn">Complete</button>
                     </div>
-                    <p class="taskContext">Send 0.05TON and earn +1mln Trollcoins <br><br>Note: Pls, connect your wallet before making a transaction</p>
+                    <p class="taskContext">Send 0.05TON and earn +1mln $TCOIN</p>
                 </div>
             </div>
         </div>
@@ -126,22 +125,15 @@
             
         </div>
 
-        <div class="setting wallet" id="profile">
+        <!-- <div class="setting wallet" id="profile">
             <h1>CONNECT TON WALLET</h1>
-            <!-- <div id="ton-connect"></div> -->
-        </div>
+            <div id="ton-connect"></div>
+        </div> -->
     </div>
     <script>
-        // const tg = window.Telegram.WebApp;
-        // tg.expand();
-        // const user = tg.initDataUnsafe.user;
-        
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://utopialf.github.io/trollcoin/tonconnect-manifest.json',
             buttonRootId: 'ton-connect'
-            // uiPreferences: {
-            //     borderRadius: 's',
-            // }
         });
 
         tonConnectUI.uiOptions = {
@@ -151,19 +143,16 @@
         //menu functions
         document.getElementById('main-btn').addEventListener('click', ()=>{
             document.getElementById('main').style.visibility = 'visible'
-            document.getElementById('profile').style.visibility = 'hidden'
+            // document.getElementById('profile').style.visibility = 'hidden'
             document.getElementById('stat').style.visibility = 'hidden'
+            document.getElementById('stat').style.pointerEvents = 'none'
         })
         document.getElementById('stat-btn').addEventListener('click', ()=>{
             document.getElementById('main').style.visibility = 'hidden'
-            document.getElementById('profile').style.visibility = 'hidden'
+            document.getElementById('main').style.pointerEvents = 'none'
+            // document.getElementById('profile').style.visibility = 'hidden'
             document.getElementById('stat').style.visibility = 'visible'
         })
-        // document.getElementById('profile-btn').addEventListener('click', ()=>{
-        //     document.getElementById('main').style.visibility = 'hidden'
-        //     document.getElementById('stat').style.visibility = 'hidden'
-        //     document.getElementById('profile').style.visibility = 'visible'
-        // })
 
         let coins = Number(localStorage.getItem('coins'))
         let h1 = document.getElementById('h1')
@@ -205,13 +194,6 @@
         async function sendTon() {
             try{
                 const result = await tonConnectUI.sendTransaction(transaction);
-                // Telegram.WebApp.showPopup({
-                //     title: 'Success',
-                //     message: 'Transaction sent!',
-                //     buttons: [
-                //         {id: 'ok', type: 'ok', text: 'Done'}
-                //     ]
-                // })
                 alert('Transaction sent!')
                 localStorage.setItem('sendTon', 'completed')
                 document.getElementById('sendTonBtn').style.background = '#1E2337'
@@ -222,14 +204,11 @@
                 localStorage.setItem('coins', coins)
                 h1.textContent = coins
             } catch(error){
-                // Telegram.WebApp.showPopup({
-                //     title: 'Error',
-                //     message: 'Transaction failed',
-                //     buttons: [
-                //         {id: 'ok', type: 'ok', text: 'OK'}
-                //     ]
-                // })
-                alert('Transaction failed')
+                if(!tonConnectUI.wallet){
+                    alert('Pls, connect your TON wallet.')
+                } else {
+                    alert('Transaction failed')
+                }
             }
         }
 
@@ -242,20 +221,10 @@
 
         document.getElementById('sendTonBtn').addEventListener('click', sendTon)
 
-        // const channels = ['@durov', '@notcoin'];
-
         let followBtn = document.getElementsByClassName('followBtn');
 
         for (let i = 0; i < followBtn.length; i++) {
             followBtn[i].addEventListener('click', ()=>{
-                // Telegram.WebApp.showPopup({
-                //     title: 'Nigga',
-                //     message: "This feature isn't ready yet.",
-                //     buttons: [
-                //         {id: 'ok', type: 'ok', text: 'OK'}
-                //     ]
-                // })
-                // alert('This feature isnt ready yet.')
             })
         }
 
@@ -276,19 +245,7 @@
                 document.getElementById('claim').style.color = 'white'
                 document.getElementById('claim').innerHTML = 'Completed <i class="bi bi-check-all"></i>'
                 document.getElementById('claim').disabled = true;
-
-                // fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${user.id}&text=You’ve received 5k coins! Enjoy your rewards!`)
-                // .then(response => response.json())
-                // .then(data => console.log('Message sent successfully'))
-                // .catch(err => console.error("Some error" + err))
             } else {
-                // Telegram.WebApp.showPopup({
-                //     title: 'Error',
-                //     message: 'You have already claimed your reward. Come back tomorrow!',
-                //     buttons: [
-                //         {id: 'ok', type: 'ok', text: 'OK'}
-                //     ]
-                // })
                 alert('You have already claimed your reward. Come back tomorrow!')
             }
         })
