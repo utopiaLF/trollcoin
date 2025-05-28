@@ -7,7 +7,6 @@
     <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
     <link rel="stylesheet" href="new.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script async src="https://telegram.org/js/telegram-web-app.js"></script>
     <title>Trollcoin - New UI</title>
 </head>
 <body>
@@ -28,14 +27,18 @@
                 <i class="bi bi-house"></i>
                 <p>Main</p>
             </div>
+            <div id="refs-btn" class="ref-btn">
+                <i class="bi bi-person-plus"></i>
+                <p>Referrals</p>
+            </div>
             <div id="stat-btn" class="stat-btn">
-                <i class="bi bi-bar-chart"></i>
+                <i class="bi bi-trophy"></i>
                 <p>Leaderboard</p>
             </div>
-            <!-- <div id="profile-btn" class="profile-btn">
-                <i class="bi bi-wallet2"></i>
-                <p>Wallet</p>
-            </div> -->
+            <div id="info-btn" class="infp-btn">
+                <i class="bi bi-info-circle"></i>
+                <p>Info</p>
+            </div>
         </div>
         <!-- main page -->
         <div class="home" id="main">
@@ -62,7 +65,7 @@
             <div id="tasks" class="tasks">
                 <h2 class="taskTxt">Tasks</h2>
         
-                <div class="taskBox">
+                <div class="taskBox" id="dailyBonusTask">
                     <h4><i class="bi bi-calendar-range"></i> Daily tasks</h4>
         
                     <div class="task">
@@ -107,8 +110,24 @@
             </div>
         </div>
 
+        <div class="refs" id="refs">
+            <h2 id="myRefLink">Loading</h2>
+
+            <h3 style="margin-top: 30px;font-family: 'Poppins', sans-serif;font-weight: 500;">Rewards? In this economy?</h3>
+
+            <button disabled>Copy</button>
+        </div>
+
         <div class="stat" id="stat">
             <h1><i class="bi bi-clipboard-data"></i> Top users</h1>
+
+            <div class="meBox">
+                <h3>My Account</h3>
+                <div class="me">
+                    <h4><i class="bi bi-person-fill"></i> <span id="myName"></span></h4>
+                    <p id="meCoins">Coins: 486k</p>
+                </div>
+            </div>
 
             <div class="topUser">
                 <h4><i class="bi bi-person-fill"></i> utopia_lf</h4>
@@ -125,12 +144,23 @@
             
         </div>
 
-        <!-- <div class="setting wallet" id="profile">
-            <h1>CONNECT TON WALLET</h1>
-            <div id="ton-connect"></div>
-        </div> -->
+        <div class="info" id="info">
+            <h2>This isn't Bitcoin. It's $TROLLCOIN</h2>
+
+            <h3>It doesn't cost anything, but you're still playing, yeah?</h3>
+
+            <h3 style="margin-top: 50px;">We don’t know where this is going. And we’re fine with that.</h3>
+
+            <h4>Beta test? Nah. This is the final version.</h4>
+        </div>
     </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script defer>
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+        const user = tg.initDataUnsafe.user;
+
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://utopialf.github.io/trollcoin/tonconnect-manifest.json',
             buttonRootId: 'ton-connect'
@@ -142,16 +172,29 @@
 
         //menu functions
         document.getElementById('main-btn').addEventListener('click', ()=>{
-            document.getElementById('main').style.visibility = 'visible'
-            // document.getElementById('profile').style.visibility = 'hidden'
-            document.getElementById('stat').style.visibility = 'hidden'
+            document.getElementById('main').style.display = 'block'
+            document.getElementById('refs').style.display = 'none'
+            document.getElementById('stat').style.display = 'none'
             document.getElementById('stat').style.pointerEvents = 'none'
+            document.getElementById('info').style.display = 'none'
         })
         document.getElementById('stat-btn').addEventListener('click', ()=>{
-            document.getElementById('main').style.visibility = 'hidden'
-            document.getElementById('main').style.pointerEvents = 'none'
-            // document.getElementById('profile').style.visibility = 'hidden'
-            document.getElementById('stat').style.visibility = 'visible'
+            document.getElementById('main').style.display = 'none'
+            document.getElementById('refs').style.display = 'none'
+            document.getElementById('stat').style.display = 'flex'
+            document.getElementById('info').style.display = 'none'
+        })
+        document.getElementById('refs-btn').addEventListener('click', ()=>{
+            document.getElementById('main').style.display = 'none'
+            document.getElementById('refs').style.display = 'flex'
+            document.getElementById('stat').style.display = 'none'
+            document.getElementById('info').style.display = 'none'
+        })
+        document.getElementById('info-btn').addEventListener('click', ()=>{
+            document.getElementById('main').style.display = 'none'
+            document.getElementById('refs').style.display = 'none'
+            document.getElementById('stat').style.display = 'none'
+            document.getElementById('info').style.display = 'flex'
         })
 
         let coins = Number(localStorage.getItem('coins'))
@@ -179,6 +222,7 @@
             document.getElementById('h1').innerText = 0
         } else {
             h1.textContent = (coins).toLocaleString('en-US') + ' $TCOIN'
+            document.getElementById('meCoins').textContent = 'Coins: ' + (coins).toLocaleString('en-US')
         }
 
         const transaction = {
@@ -313,6 +357,9 @@
             updateLevel()
             addCoins(todayCoins)
         })
+
+        document.getElementById('myName').textContent = user.first_name;
+        document.getElementById('myRefLink').textContent = `https://t.me/trollcoin_test_bot?start=${user.id}`
     </script>
 </body>
 </html>

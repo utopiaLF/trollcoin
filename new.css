@@ -57,7 +57,7 @@ body{
     height: 50px;
     outline: none;
     border: none;
-    background-color: #1a1a1a;
+    background-color: #1E2337;
     color: #f8f8ff;
     font-weight: 600;
     font-family: "Poppins", sans-serif;
@@ -81,29 +81,6 @@ body{
         outline: 30px solid transparent;
         outline-offset: 10px;
     }
-}
-.setting{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.3);
-    /* backdrop-filter: blur(100px); */
-    box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    z-index: -1;
-}
-.setting h1{
-    margin-bottom: 30px;
-    font-family: "Oxanium", sans-serif;
-    background: linear-gradient(to left, #f8f8ff, #CFAF77);
-    -webkit-background-clip: text;
-    color: transparent;
 }
 .menu{
     width: 100%;
@@ -131,14 +108,9 @@ body{
     padding: 0px 5px;
     transition: all 0.2s ease;
     margin: 0px 5px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     flex-direction: column;
     font-family: "Poppins", sans-serif;
-}
-.menu div:hover {
-    /* background-color: #3c3c3c; */
-    transform: translateY(-3px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
 }
 .menu div p{
     margin-top: 3px;
@@ -151,7 +123,7 @@ body{
     left: 0;
     z-index: 3;
     /* backdrop-filter: blur(1px); */
-    background: linear-gradient(to top right, #1a1a1a, #2e2e2e, #CFAF77);
+    background: linear-gradient(55deg, #1a1a1a, #2e2e2e, #CFAF77);
 }
 .home .myCoins{
     width: 100%;
@@ -222,7 +194,6 @@ body{
     margin-top: 40px;
     box-shadow: 0px -5px 5px rgb(0, 0, 0, 0.2);
     background-color: #1a1a1a68;
-    backdrop-filter: blur(30px);
     outline: 2px solid #f8f8ff;
 }
 .tasks .taskTxt{
@@ -275,6 +246,33 @@ body{
     font-family: "Poppins", sans-serif;
     font-size: 0.8rem;
 }
+
+.refs{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    padding: 20px 0px 0px 0px;
+    background: linear-gradient(55deg, #1a1a1a, #2e2e2e, #212121b5);
+}
+.refs button{
+    padding: 9px 50px;
+    font-size: 0.8rem;
+    border: none;
+    outline: none;
+    background-color: #f8f8ff;
+    border-radius: 20px;
+    box-shadow: 2px 5px 5px rgb(0, 0, 0, 0.3);
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    margin-top: 50px;
+}
 .stat{
     width: 100%;
     height: 100vh;
@@ -286,14 +284,22 @@ body{
     top: 0;
     left: 0;
     z-index: -1;
-    background-color: #2e2e2e;
+    background: linear-gradient(55deg, #1a1a1a, #2e2e2e, #CFAF77);
     padding: 20px 0px 0px 0px;
 }
 .stat h1{
     margin-bottom: 30px;
     font-family: "Oxanium", sans-serif;
 }
-.stat .topUser{
+.stat .meBox{
+    border-bottom: 2px solid #f8f8ff53;
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+}
+.stat .meBox h3{
+    font-family: "Oxanium", sans-serif;
+}
+.stat .me{
     width: 92vw;
     height: 60px;
     display: flex;
@@ -306,4 +312,50 @@ body{
     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
     background: linear-gradient(to top right, #1a1a1a, #2e2e2e, #1a1a1a68);
     font-family: "Poppins", sans-serif;
+}
+.stat .topUser{
+    width: 92vw;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-top: 15px;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
+    background-color: #f8f8ff;
+    color: #1a1a1a;
+    font-family: "Poppins", sans-serif;
+}
+
+.info{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(55deg, #1a1a1a, #2e2e2e, #212121b5);
+    padding: 10px 20px;
+    text-align: center;
+}
+.info h2{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    margin-top: 40px;
+}
+.info h3{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    margin-top: 35px;
+}
+.info h4{
+    font-family: "Oxanium", sans-serif;
+    position: absolute;
+    bottom: 15%;
 }
