@@ -43,14 +43,17 @@ body{
 .gift h1{
     font-family: "Poppins", sans-serif;
     margin-bottom: 30px;
+    color: #1E2337;
 }
 .gift h2{
     font-family: "Poppins", sans-serif;
     margin-bottom: 30px;
+    color: #1E2337;
 }
 .gift p{
     font-family: "Oxanium", sans-serif;
     margin-bottom: 30px;
+    color: #1E2337;
 }
 .gift button{
     width: 70%;
@@ -90,9 +93,9 @@ body{
     justify-content: space-around;
     padding: 2px;
     border-radius: 10px 10px 0px 0px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(50px);
     z-index: 10;
-    background-color: #212121cc;
+    background: rgba(255,255,255,0.6);
     box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.4);
     position: fixed;
     bottom: 0;
@@ -105,12 +108,15 @@ body{
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    padding: 0px 5px;
     transition: all 0.2s ease;
     margin: 0px 5px;
     font-size: 0.8rem;
     flex-direction: column;
     font-family: "Poppins", sans-serif;
+    color: #1E2337;
+}
+.menu div i{
+    font-size: 1rem;
 }
 .menu div p{
     margin-top: 3px;
@@ -123,7 +129,7 @@ body{
     left: 0;
     z-index: 3;
     /* backdrop-filter: blur(1px); */
-    background: linear-gradient(55deg, #1a1a1a, #2e2e2e, #CFAF77);
+    background: linear-gradient(to top, #1ABC9C, #8E44AD);
 }
 .home .myCoins{
     width: 100%;
@@ -165,7 +171,7 @@ body{
     color: #f8f8ff;
     font-family: "Oxanium", sans-serif;
     font-size: 1.8rem;
-    text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
+    text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
     background-color: #2121212f;
     padding: 4px 10px;
     border-radius: 20px;
@@ -177,10 +183,10 @@ body{
     gap: 30px;
     /* background-color: #2121212f; */
     border-radius: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 .home .myCoins .userMiniInfos h4{
-    text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
+    text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
     border-left: 1px solid #f8f8ff53;
     border-right: 1px solid #f8f8ff53;
     padding: 5px 10px;
@@ -235,11 +241,13 @@ body{
     font-size: 0.8rem;
     border: none;
     outline: none;
-    background-color: #CFAF77;
+    /* background-color: #1ABC9C; */
     border-radius: 20px;
     box-shadow: 2px 5px 5px rgb(0, 0, 0, 0.3);
     font-weight: 400;
     font-family: "Poppins", sans-serif;
+    color: #f8f8ff;
+    background: linear-gradient(55deg, #1ABC9C, #8E44AD);
 }
 .taskContext{
     margin-bottom: 30px;
@@ -259,16 +267,20 @@ body{
     left: 0;
     z-index: -1;
     padding: 20px 0px 0px 0px;
-    background: linear-gradient(55deg, #1a1a1a, #2e2e2e, #212121b5);
+    background: linear-gradient(55deg, #1ABC9C, #8E44AD);
+}
+.refs h2{
+    text-align: center;
 }
 .refs button{
     padding: 9px 50px;
     font-size: 0.8rem;
     border: none;
     outline: none;
-    background-color: #f8f8ff;
+    background-color: #1E2337;
+    color: #f8f8ff;
     border-radius: 20px;
-    box-shadow: 2px 5px 5px rgb(0, 0, 0, 0.3);
+    box-shadow: 2px 5px 5px rgb(0, 0, 0, 0.1);
     font-weight: 400;
     font-family: "Poppins", sans-serif;
     margin-top: 50px;
@@ -284,7 +296,7 @@ body{
     top: 0;
     left: 0;
     z-index: -1;
-    background: linear-gradient(55deg, #1a1a1a, #2e2e2e, #CFAF77);
+    background: linear-gradient(55deg, #1ABC9C, #8E44AD);
     padding: 20px 0px 0px 0px;
 }
 .stat h1{
@@ -309,9 +321,10 @@ body{
     box-sizing: border-box;
     border-radius: 20px;
     margin-top: 15px;
-    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(to top right, #1a1a1a, #2e2e2e, #1a1a1a68);
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
     font-family: "Poppins", sans-serif;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(255,255,255,0.1);
 }
 .stat .topUser{
     width: 92vw;
@@ -323,9 +336,10 @@ body{
     box-sizing: border-box;
     border-radius: 20px;
     margin-top: 15px;
-    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
-    background-color: #f8f8ff;
-    color: #1a1a1a;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
+    background: rgba(255,255,255,0.05);
+    border: 3px solid rgba(255,255,255,0.1);
+    color: #f8f8ff;
     font-family: "Poppins", sans-serif;
 }
 
@@ -340,7 +354,7 @@ body{
     top: 0;
     left: 0;
     z-index: -1;
-    background: linear-gradient(55deg, #1a1a1a, #2e2e2e, #212121b5);
+    background: linear-gradient(55deg, #1ABC9C, #8E44AD);
     padding: 10px 20px;
     text-align: center;
 }
