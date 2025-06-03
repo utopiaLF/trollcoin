@@ -1,350 +1,105 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Bebas+Neue&family=Orbitron:wght@400..900&family=Syncopate:wght@400;700&family=Tilt+Neon&display=swap');
-body{
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Oxanium:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
     padding: 0;
     margin: 0;
-}
-.warning{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #2E2E2E;
-    color: white;
-    flex-direction: column;
-    text-align: center;
-}
-.warning a{
-    padding: 10px 30px;
-    text-decoration: none;
-    color: white;
-    background-color: black;
-    border-radius: 20px;
-}
-.content{
-    display: none;
-}
-@media(max-width: 700px){
-.warning{
-    display: none;
-}
-.content{
-    display: block;
+    box-sizing: border-box;
 }
 body{
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    /* background: linear-gradient(to bottom, #474747, #2E2E2E); */
-    background-color: #212121;
-    backdrop-filter: blur(100px);
-    height: 100vh;
+    width: 100vw;
+    /* height: max-content; */
     display: flex;
     justify-content: center;
-    align-items: center;
-    user-select: none;
+    align-items: self-start;
     color: #f8f8ff;
     height: 100vh;
-    overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+    /* background: linear-gradient(to top right, #1a1a1a, #2e2e2e, #CFAF77); */
 }
-.tasks{
-    width: 100%;
-    height: max-content;
-    display: none;
-    padding-top: 10px;
+.gift{
+    bottom: -100%;
+    opacity: 0;
+    transition: opacity 0.4s ease, bottom 0.7s ease;
 }
-.taskBox{
-    width: 92vw;
-    height: max-content;
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-}
-.taskBox .task{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #6a6a6b;
-    backdrop-filter: blur(50px);
-    height: 60px;
-    align-items: center;
-    padding: 10px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    margin-top: -10px;
-    /* box-shadow: 0px 5px 5px rgb(0, 0, 0, 0.3); */
-    box-shadow: 2px 5px 10px rgb(0, 0, 0, 0.3);
-}
-.taskBox .task p{
-    font-family: sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-}
-.taskBox .task button{
-    padding: 9px 30px;
-    font-size: 0.9rem;
-    border: none;
-    outline: none;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 2px 5px 5px rgb(0, 0, 0, 0.3);
-    font-weight: 400;
-}
-/* .main{
-    display: none;
-} */
-/* .tasks div{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.tasks div h1{
-    font-family: 'VT323', monospace;
-    text-align: center;
-} */
-.top{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    box-sizing: border-box;
-}
-.top div{
-    width: max-content;
-    background-color: #2E2E2E;
-    padding: 0px 40px;
-    border-radius: 5px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    box-shadow: 2px 5px 10px rgb(0, 0, 0, 0.3);
-}
-
-.top div p{
-    font-size: 1.2rem;
-    font-family: sans-serif;
-    margin-left: 5px;
-}
-.main h1{
-    color: #CFAF77;
-    text-align: center;
-    /* font-family: sans-serif; */
-    font-size: 2rem;
-    transform: translateY(-40px);
-    /* background-color: #212121; */
-    border-radius: 30px;
-    padding: 5px;
-    z-index: 10;
-    font-family: "Audiowide", sans-serif;
-    font-weight: 600;
-    transition: all 0.4s;
-}
-.main h1.active{
-    text-shadow: 0px 0px 30px #CFAF77;
-    animation: animeCount 3s ease infinite;
-}
-@keyframes animeCount{
-    50%{
-        transform: translateY(-55px);
-    }
-}
-.main .coin{
-    width: 230px;
-    height: 230px;
-    background-color: #363636;
-    border-radius: 50%;
-    border: 20px solid #212121;
-    box-shadow: inset 6px 10px 80px black,
-    inset -6px -10px 10px rgb(50, 50, 50),
-    2px 2px 10px rgb(86, 86, 86);
-    box-shadow: inset 6px 6px 20px black,
-    inset -6px -6px 20px black,
-    6px 6px 1px 1px #474747,
-    -6px -6px 30px #2E2E2E;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.5s ease;
-    margin-bottom: 50px;
-    position: relative;
-    /* background-image: url(pngimg.com\ -\ trollface_PNG44.png);
-    background-position: center;
-    background-size: 170px;
-    background-repeat: no-repeat; */
-    font-size: 2rem;
-}
-.main .coin::before{
-    position: absolute;
-    width: 110%;
-    height: 110%;
-    content: '';
-    background-color: transparent;
-    border-radius: 50%;
-}
-/* .main .coin img{
-    width: 130px;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-} */
-.main .coin img.active{
+.gift.active{
     opacity: 1;
-    /* animation: animeTroll 0.8s infinite; */
-    /* transform-origin: center; */
-    /* transform: scale(1.1); */
-}
-/* @keyframes animeTroll{
-    25%{
-        transform: translateX(2px);
-    }
-    50%{
-        transform: translate(3px, 3px);
-    }
-    75%{
-        transform: translateX(-2px);
-    }
-    100%{
-
-    }
-} */
-.main .coin:active{
-    transform: scale(0.95);
-}
-.main .coin.active{
-    border-color: white;
-    box-shadow: inset 0px 0px 10px white, 0px 0px 40px white;
-}
-.main .coin.skin1{
-    box-shadow: none;
-    border: none;
-    background: none;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.5s ease;
-    margin-bottom: 50px;
-    position: relative;
-    background-image: url(notcoin.png);
-    background-position: center;
-    background-size: 250px;
-    background-repeat: no-repeat;
-    font-size: 2rem;
-}
-.main .coin.skin2{
-    width: 230px;
-    height: 230px;
-    background-color: #363636;
-    border-radius: 50%;
-    border: 20px solid #212121;
-    box-shadow: inset 6px 10px 80px black,
-    inset -6px -10px 10px rgb(50, 50, 50),
-    2px 2px 10px rgb(86, 86, 86);
-    box-shadow: inset 6px 6px 20px black,
-    inset -6px -6px 20px black,
-    6px 6px 1px 1px #474747,
-    -6px -6px 30px #2E2E2E;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.5s ease;
-    margin-bottom: 50px;
-    position: relative;
-    background-image: url(troll-face-png-picture.png);
-    background-position: center;
-    background-size: 170px;
-    background-repeat: no-repeat;
-    font-size: 2rem;
-}
-.main .coin.skin3{
-    width: 230px;
-    height: 230px;
-    background-color: #363636;
-    border-radius: 50%;
-    border: 20px solid #212121;
-    box-shadow: inset 6px 10px 80px black,
-    inset -6px -10px 10px rgb(50, 50, 50),
-    2px 2px 10px rgb(86, 86, 86);
-    box-shadow: inset 6px 6px 20px black,
-    inset -6px -6px 20px black,
-    6px 6px 1px 1px #474747,
-    -6px -6px 30px #2E2E2E;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.5s ease;
-    margin-bottom: 50px;
-    position: relative;
-    background-image: url(troll-face-78-1.png);
-    background-position: center;
-    background-size: 150px;
-    background-repeat: no-repeat;
-    font-size: 2rem;
-}
-
-/* .xtap{
     width: 100%;
-    height: max-content;
+    height: 80vh;
+    background-color: #f8f8ff53;
     position: fixed;
+    bottom: 0;
     left: 0;
+    z-index: 11;
+    color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    backdrop-filter: blur(30px);
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: 0px -10px 100px 5px rgba(0,0,0,0.3);
+}
+.gift h1{
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 30px;
+    color: #1E2337;
+}
+.gift h2{
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 30px;
+    color: #1E2337;
+}
+.gift p{
+    font-family: "Oxanium", sans-serif;
+    margin-bottom: 30px;
+    color: #1E2337;
+}
+.gift button{
+    width: 70%;
     height: 50px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 5px;
-    box-sizing: border-box;
-}
-.xtap div{
-    background-color: #474747;
-    padding: 5px 30px;
-    border-radius: 5px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-} */
-
-/* .guruBox{
-    position: absolute;
-    height: 70%;
-    width: 100%;
-    background-color: #121212;
-    top: 0%;
-    left: 0%;
-    transform: translate(0%, 50%);
-} */
-.main .coinBtn{
-    width: 60vw;
-    height: 55px;
-    border: none;
     outline: none;
-    background-color: #121212;
-    border-radius: 10px;
-    color: #CFAF77;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.1rem;
+    border: none;
+    background-color: #1E2337;
+    color: #f8f8ff;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.3rem;
+    border-radius: 20px;
+    animation: borderAnime 1.5s infinite;
 }
-
+@keyframes borderAnime{
+    0%{
+        outline: 2px solid #212121cc;
+        outline-offset: 0px;
+    }
+    25%{
+        outline: 2px solid #2121212f;
+        outline-offset: 5px;
+    }
+    /* 75%{
+        outline: 10px solid #212121cc;
+    } */
+    100%{
+        outline: 30px solid transparent;
+        outline-offset: 10px;
+    }
+}
 .menu{
-    position: fixed;
-    left: 0;
-    bottom: 15px;
     width: 100%;
-    height: 78px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    box-sizing: border-box;
-    padding: 5px;
-    /* border-radius: 10px 10px 0px 0px; */
+    padding: 2px;
+    border-radius: 10px 10px 0px 0px;
+    backdrop-filter: blur(50px);
+    z-index: 10;
+    background: rgba(255,255,255,0.6);
+    box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.4);
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
 .menu div{
     width: 30%;
@@ -353,307 +108,268 @@ body{
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    padding: 0px 5px;
     transition: all 0.2s ease;
-    outline: 1px solid #474747;
     margin: 0px 5px;
-    background-color: #2e2e2e7a;
-    backdrop-filter: blur(50px);
+    font-size: 0.8rem;
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+    color: #1E2337;
 }
-/* .menu div:active{
-    transform: scale(1.5);
-    } */
-    .menu div p{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.menu div i{
+    font-size: 1rem;
 }
-
-.coinEffect{
-    color: white;
-    z-index: 10;
-    font-size: 2rem;
-    animation: moveUp 0.7s forwards, fadeOut 1.2s ease forwards;
+.menu div p{
+    margin-top: 3px;
+}
+.home{
+    width: 100%;
+    height: max-content;
     position: absolute;
-    font-family: "Audiowide", sans-serif;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    /* backdrop-filter: blur(1px); */
+    background: linear-gradient(to top, #1ABC9C, #8E44AD);
 }
-
-.profile{
+.home .myCoins{
     width: 100%;
-    height: 100vh;
-    display: none;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    margin-top: 15px;
+    flex-direction: column;
 }
-.profile .walletBox{
+.home .myCoins div{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.home .myCoins .topBar{
     width: 100%;
-    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    padding: 0px 5px;
+}
+.home .myCoins div p{
+    /* margin-left: 10px; */
+    color: #f8f8ff;
+    font-family: "Creepster", system-ui;
+    font-size: 1.5rem;
+    background-color: #2121212f;
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.4);
+}
+.home .myCoins div h1{
+    margin-top: 20px;
+    color: #f8f8ff;
+    font-family: "Oxanium", sans-serif;
+    font-size: 1.8rem;
+    text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+    background-color: #2121212f;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+.home .myCoins .userMiniInfos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    /* background-color: #2121212f; */
+    border-radius: 20px;
+    margin-top: 30px;
+}
+.home .myCoins .userMiniInfos h4{
+    text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
+    border-left: 1px solid #f8f8ff53;
+    border-right: 1px solid #f8f8ff53;
+    padding: 5px 10px;
+    font-family: "Poppins", sans-serif;
+}
+.tasks{
+    width: 100%;
+    height: max-content;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-top: 40px;
+    box-shadow: 0px -5px 5px rgb(0, 0, 0, 0.2);
+    background-color: #1a1a1a68;
+    outline: 2px solid #f8f8ff;
+}
+.tasks .taskTxt{
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-family: "Oxanium", sans-serif;
+}
+.taskBox{
+    width: 100%;
+    height: max-content;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* padding: 30px;
-    box-sizing: border-box; */
+    padding-bottom: 30px;
 }
-.profile .walletBox h1{
-    font-family: "Audiowide", sans-serif;
-    font-size: 1.8rem;
-    margin-bottom: 40px;
+.taskBox .task{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #f8f8ff;
+    color: #2e2e2e;
+    /* background-color: #CFAF77; */
+    /* backdrop-filter: blur(50px); */
+    height: 55px;
+    align-items: center;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.taskBox .task p{
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.taskBox .task button{
+    padding: 6px 18px;
+    font-size: 0.8rem;
+    border: none;
+    outline: none;
+    /* background-color: #1ABC9C; */
+    border-radius: 20px;
+    box-shadow: 2px 5px 5px rgb(0, 0, 0, 0.3);
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    color: #f8f8ff;
+    background: linear-gradient(55deg, #1ABC9C, #8E44AD);
+}
+.taskContext{
+    margin-bottom: 30px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.8rem;
+}
+
+.refs{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    padding: 20px 0px 0px 0px;
+    background: linear-gradient(55deg, #1ABC9C, #8E44AD);
+}
+.refs h2{
     text-align: center;
 }
-.profile .walletBox .tonConnect{
-    background-color: #FFFFFF;
-    color: #121212;
-    border-radius: 10px;
-    padding: 12px 30px;
-    display: flex;
-    align-items: center;
+.refs button{
+    padding: 9px 50px;
+    font-size: 0.8rem;
+    border: none;
+    outline: none;
+    background-color: #1E2337;
+    color: #f8f8ff;
+    border-radius: 20px;
+    box-shadow: 2px 5px 5px rgb(0, 0, 0, 0.1);
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    margin-top: 50px;
 }
-.profile .walletBox .tonConnect svg{
-    margin-right: 10px;
-}
-@keyframes moveUp{
-    from{
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to{
-        opacity: 1;
-        transform: scale(1) translateY(-180px);
-    }
-}
-
-@keyframes fadeOut{
-    from{
-        opacity: 1;
-    }
-    to{
-        opacity: 0;
-    }
-}
-
 .stat{
     width: 100%;
     height: 100vh;
-    display: none;
-}
-.stat.active{
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(55deg, #1ABC9C, #8E44AD);
+    padding: 20px 0px 0px 0px;
 }
 .stat h1{
-    margin-bottom: 60px;
+    margin-bottom: 30px;
+    font-family: "Oxanium", sans-serif;
+}
+.stat .meBox{
+    border-bottom: 2px solid #f8f8ff53;
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+}
+.stat .meBox h3{
+    font-family: "Oxanium", sans-serif;
+}
+.stat .me{
+    width: 92vw;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-top: 15px;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
+    font-family: "Poppins", sans-serif;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(255,255,255,0.1);
 }
 .stat .topUser{
     width: 92vw;
-    height: 55px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #6a6a6b;
     padding: 10px;
     box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-top: 15px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.04);
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
+    background: rgba(255,255,255,0.05);
+    border: 3px solid rgba(255,255,255,0.1);
+    color: #f8f8ff;
+    font-family: "Poppins", sans-serif;
 }
 
-.tasks-btn, .main-btn, .profile-btn, .stat-btn{
-    color: grey;
-    font-size: 1.5rem;
-}
-
-.tasks-btn.active, .main-btn.active, .profile-btn.active, .stat-btn.active{
-    color: #FFFFFF;
-    text-shadow: 0px 0px 5px #FFFFFF;
-    outline-color: #FFFFFF;
-}
-
-.main-btn.one{
-    color: #FFFFFF;
-    text-shadow: 0px 0px 15px #FFFFFF;
-    font-size: 1.5rem;
-    outline-color: #FFFFFF;
-}
-
-.setting{
+.info{
     width: 100%;
-    height: 90vh;
-    position: absolute;
-    bottom: -100%;
-    left: 0;
-    background-color: #212121;
-    transition: all 0.5s ease;
-}
-.sinfo{
+    height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-direction: column;
-    text-align: center;
-    padding: 20px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-.setting.active{
-    bottom: 0%;
-}
-
-.setting .allCoins{
-    padding: 10px;
-}
-.setting .allCoins h1{
-    font-family: sans-serif;
-}
-.setting .change_coin{
-    display: flex;
-    width: 100%;
-    height: max-content;
-    justify-content: space-between;
-    background-color: #121212;
-    padding: 5px 40px;
-    border-radius: 5px;
-    align-items: center;
-    box-sizing: border-box;
-    margin-top: 10px;
-    font-family: sans-serif;
-    box-shadow: 2px 5px 10px rgb(0, 0, 0, 0.2);
-    position: relative;
-}
-.setting .change_coin.selected{
-    outline: 1px solid #FFFFFF;
-}
-.setting .change_coin.not_allowed::after{
     position: absolute;
-    content: '';
-    left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(1.5px);
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(55deg, #1ABC9C, #8E44AD);
+    padding: 10px 20px;
+    text-align: center;
 }
-.buySkin{
-    position: absolute;
-    background-color: transparent;
-    color: #FFFFFF;
-    font-family: sans-serif;
+.info h2{
+    font-family: "Poppins", sans-serif;
     font-weight: 500;
-    font-size: 1.1rem;
-    background: linear-gradient(to left, #1E2337, #121212);
-    padding: 5px 20px;
-    border: 0;
-    outline: 0;
-    border-radius: 10px;
-    z-index: 10;
-    right: 5%;
+    margin-top: 40px;
 }
-.refBox{
-    position: absolute;
-    bottom: -100%;
-    left: 0;
-    width: 100%;
-    height: 300px;
-    background-color: #474747;
-    text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 400;
-    transition: all 0.5s ease;
+.info h3{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    margin-top: 35px;
 }
-.refBox.active{
-    bottom: 0;
-}
-.refBox button{
-    width: 230px;
-    height: 50px;
-    border-radius: 10px;
-    padding: 9px 30px;
-    font-size: 0.9rem;
-    border: none;
-    outline: none;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    box-shadow: 2px 5px 5px rgb(0, 0, 0, 0.3);
-    font-weight: 400;
-}
-/* From Uiverse.io by zanina-yassine */ 
-/* Remove this container when use*/
-.component-title {
-    width: 100%;
+.info h4{
+    font-family: "Oxanium", sans-serif;
     position: absolute;
-    z-index: 999;
-    top: 30px;
-    left: 0;
-    padding: 0;
-    font-size: 1rem;
-    font-weight: 700;
-    color: #FFFFFF;
-    text-align: center;
-  }
-  
-  .tab-container {
-    position: relative;
-  
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-  
-    padding: 2px;
-  
-    background-color: #212121;
-    border-radius: 9px;
-    margin-top: 30px;
-    color: black;
-    font-weight: 600;
-  }
-  
-  .indicator {
-    content: "";
-    width: 130px;
-    height: 28px;
-    background: #474747;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    z-index: 9;
-    border: 0.5px solid rgba(0, 0, 0, 0.04);
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
-    border-radius: 7px;
-    transition: all 0.2s ease-out;
-  }
-  
-  .tab {
-    width: 130px;
-    height: 28px;
-    position: absolute;
-    z-index: 99;
-    outline: none;
-    opacity: 0;
-  }
-  
-  .tab_label {
-    width: 130px;
-    height: 28px;
-  
-    position: relative;
-    z-index: 999;
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    border: 0;
-  
-    font-size: 0.75rem;
-    opacity: 0.6;
-    color: #FFFFFF;
-    cursor: pointer;
-  }
-  
-  .tab--1:checked ~ .indicator {
-    left: 2px;
-  }
-  
-  .tab--2:checked ~ .indicator {
-    left: calc(130px + 2px);
-  }
-  
-  .tab--3:checked ~ .indicator {
-    left: calc(130px * 2 + 2px);
-  }
+    bottom: 15%;
 }
