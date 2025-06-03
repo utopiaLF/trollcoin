@@ -1,229 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.12.1/font/bootstrap-icons.min.css">
-    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
-    <link rel="stylesheet" href="new.css">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <title>Trollcoin - New UI</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.12.1/font/bootstrap-icons.min.css">
+        <script async src="https://telegram.org/js/telegram-web-app.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+        <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <title>Document</title>
 </head>
 <body>
+    <div class="warning">
+        <h1>Mini App only works for mobile devices</h1>
+
+        <a href="https://t.me/trollcoin_test_bot">Open Telegram Mini-App</a>
+    </div>
+
     <div class="content">
-        <div class="gift" id="gift">
-            <img src="bonus.png" width="120" alt="">
-            <h1>Claim your daily reward</h1>
-
-            <p>Earn a $TCOIN bonus every day by using our mini-app!</p>
-
-            <h2 id="dayCount"></h2>
-
-            <button id="claim1k" onclick="launchConfetti()">CLAIM +1K</button>
-        </div>
-
-        <div class="menu">
-            <div id="main-btn" class="main-btn">
-                <i class="bi bi-house"></i>
-                <p>Main</p>
-            </div>
-            <div id="refs-btn" class="ref-btn">
-                <i class="bi bi-person-plus"></i>
-                <p>Referrals</p>
-            </div>
-            <div id="stat-btn" class="stat-btn">
+        <h1 id="h1"></h1>
+        <div class="top">
+            <div>
+                <!-- <img src="troll-face-78-1.png" width="25" id="levelPic" alt=""> -->
                 <i class="bi bi-trophy"></i>
-                <p>Leaderboard</p>
+                <p id="level"> Level</p>
             </div>
-            <div id="info-btn" class="infp-btn">
-                <i class="bi bi-info-circle"></i>
-                <p>Info</p>
+
+            <div class="settingBtn" id="settingBtn">
+                <i class="bi bi-sliders"></i>
             </div>
         </div>
-        <!-- main page -->
-        <div class="home" id="main">
-            <!-- <div class="top"> 
+
+
+        <div id="tasks" class="tasks">
+            <!-- <div>
+                <img src="https://i.gifer.com/5Mz4.gif" width="150" alt="Fire gif">
+                <h1>This page is under development. Dev is cooking...</h1>
             </div> -->
-            <div class="myCoins">
-                <div class="topBar">
-                    <div id="ton-connect"></div>
-                    <p id="level">Level: King</p>
+            <h1>Tasks</h1>
+    
+            <div class="taskBox">
+                <h2><i class="bi bi-calendar-range"></i> Daily tasks</h2>
+    
+                <div class="task">
+                    <p><i class="bi bi-gift"></i> Daily check-in</p>
+    
+                    <button class="followBtn" id="claim" onclick="launchConfetti()">Claim</button>
                 </div>
-
-                <div>
-                    <img src="main.png" width="160" alt="Trollcoin">
-                    <h1 id="h1">0 $TCOIN</h1>
-
-                    <div class="userMiniInfos">
-                        <h4>Tasks: 5</h4>
-                        <h4>Ref: 0</h4>
-                        <h4 id="toDay">Day</h4>
-                    </div>
+                <p>You can earn +5k Trollcoins daily</p>
+                <!-- <h2>Follow channels</h2>
+    
+                <div class="task">
+                    <p>Follow to channel</p>
+    
+                    <button class="followBtn" id="followBtn">Follow</button>
+                </div> -->
+    
+                <h2><i class="bi bi-link-45deg"></i> Invite others</h2>
+                <div class="task">
+                    <p><i class="bi bi-person-plus"></i> Invite your friends</p>
+    
+                    <span>
+                        <button id="refBtn">Share</button>
+                    </span>
                 </div>
-            </div>
-
-            <div id="tasks" class="tasks">
-                <h2 class="taskTxt">Tasks</h2>
-        
-                <div class="taskBox" id="dailyBonusTask">
-                    <h4><i class="bi bi-calendar-range"></i> Daily tasks</h4>
-        
-                    <div class="task">
-                        <p><i class="bi bi-gift"></i> Daily check-in</p>
-        
-                        <button class="followBtn" id="claim" onclick="launchConfetti()">Claim</button>
-                    </div>
-                    <p class="taskContext">You can earn +500 $TCOIN daily</p>
-                    
-                    <h4><i class="bi bi-telegram"></i> Follow channels</h4>
-        
-                    <div class="task">
-                        <p>Durov's channel</p>
-        
-                        <button class="followBtn" id="followBtn">Go</button>
-                    </div>
-                    <div class="task">
-                        <p>Notcoin community</p>
-        
-                        <button class="followBtn" id="followBtn">Go</button>
-                    </div>
-                    <p class="taskContext">This feature isn't ready yet</p>
-        
-                    <h4><i class="bi bi-link-45deg"></i> Invite others</h4>
-                    <div class="task">
-                        <p><i class="bi bi-person-plus"></i> Invite your friends</p>
-        
-                        <span>
-                            <button id="refBtn">Share</button>
-                        </span>
-                    </div>
-                    <p class="taskContext">This function is under development</p>
-        
-                    <h4><i class="bi bi-wallet"></i> TON transaction</h4>
-                    <div class="task">
-                        <p><i class="bi bi-clock-history"></i> Send 0.05 TON</p>
-        
-                        <button id="sendTonBtn">Complete</button>
-                    </div>
-                    <p class="taskContext">Send 0.05TON and earn +1mln $TCOIN</p>
+    
+                <h2><i class="bi bi-wallet"></i> TON transaction</h2>
+                <div class="task">
+                    <p><i class="bi bi-clock-history"></i> Send 0.05 TON</p>
+    
+                    <button id="sendTonBtn">Complete</button>
                 </div>
+                <p>Send 0.05TON and earn +1mln Trollcoins</p>
             </div>
         </div>
 
-        <div class="refs" id="refs">
-            <h2 style="text-align:center;" id="myRefLink">Loading</h2>
+        <div class="main" id="main">
+            <div class="top">
+                <div>
+                    <!-- <img src="troll-face-78-1.png" width="25" id="levelPic" alt=""> -->
+                    <i class="bi bi-trophy"></i>
+                    <p id="level"> Level</p>
+                </div>
+    
+                <div class="settingBtn" id="settingBtn">
+                    <i class="bi bi-sliders"></i>
+                </div>
+            </div>
+            
+            <h1 id="h1">0</h1>
+    
+            <!-- <div class="coin" id="coin">
+                 <p id="tapMe" style="color: grey;">Tap</p>
+            </div> -->
 
-            <h3 style="margin-top: 30px;font-family: 'Poppins', sans-serif;font-weight: 500;">Rewards? In this economy?</h3>
+            <!-- <button class="coinBtn">START</button> -->
 
-            <button disabled>Copy</button>
+            <!-- <img src="notcoin.png" class="coin" id="coin" alt=""> -->
+    
+            <!-- <div class="xtap">
+                <div>
+                    <p>1000/1000</p>
+                </div>
+                <div class="guru" id="guru">
+                </div>
+            </div> -->
+    
+        </div>
+        <div class="setting" id="setting">
+            <div class="allCoins">
+                <h1>Choose skin</h1>
+                <div class="change_coin" id="skin1">
+                    <img src="notcoin.png" width="50" height="50" alt="Icon">
+                    <h2>Notcoin</h2>
+
+                    <button id="buySkin" class="buySkin"><i class="bi bi-bag-fill"></i> 0.05TON</button>
+                </div>
+                <div class="change_coin" id="skin2">
+                    <img src="troll-face-png-picture.png" width="50" height="50" alt="Icon">
+                    <h2>T-coin 1</h2>
+                </div>
+                <div class="change_coin" id="skin3">
+                    <img src="troll-face-78-1.png" width="50" height="50" alt="Icon">
+                    <h2>T-coin 2</h2>
+                </div>
+            </div>
+        </div>
+        <div class="refBox" id="refBox">
+            <h1 id="refLink">This feature is not ready yet</h1>
+            <button id="okref">Close</button>
         </div>
 
         <div class="stat" id="stat">
             <h1><i class="bi bi-clipboard-data"></i> Top users</h1>
 
-            <div class="meBox">
-                <h3>My Account</h3>
-                <div class="me">
-                    <h4><i class="bi bi-person-fill"></i> <span id="myName"></span></h4>
-                    <p id="meCoins">Coins: 486k</p>
-                </div>
-            </div>
-
             <div class="topUser">
-                <h4><i class="bi bi-person-fill"></i> user</h4>
-                <p>Coins: 5,000,000</p>
+                <h3><i class="bi bi-person-fill"></i> Username</h3>
+                <p>LVL: Broke</p>
             </div>
             <div class="topUser">
-                <h4><i class="bi bi-person-fill"></i> user</h4>
-                <p>Coins: 78,403</p>
+                <h3><i class="bi bi-person-fill"></i> Username</h3>
+                <p>LVL: Broke</p>
             </div>
             <div class="topUser">
-                <h4><i class="bi bi-person-fill"></i> user</h4>
-                <p>Coins: 1,380,400</p>
+                <h3><i class="bi bi-person-fill"></i> Username</h3>
+                <p>LVL: Broke</p>
+            </div>
+            <div class="topUser">
+                <h3><i class="bi bi-person-fill"></i> Username</h3>
+                <p>LVL: Broke</p>
+            </div>
+            <div class="topUser">
+                <h3><i class="bi bi-person-fill"></i> Username</h3>
+                <p>LVL: Broke</p>
+            </div>
+            <div class="topUser">
+                <h3><i class="bi bi-person-fill"></i> Username</h3>
+                <p>LVL: Broke</p>
             </div>
             
         </div>
-
-        <div class="info" id="info">
-            <h2>This isn't Bitcoin. It's $TROLLCOIN</h2>
-
-            <h3>It doesn't cost anything, but you're still playing, yeah?</h3>
-
-            <h3 style="margin-top: 50px;">We don’t know where this is going. And we’re fine with that.</h3>
-
-            <h4>Beta test? Nah. This is the final version.</h4>
+        
+        <div class="profile" id="profile">
+            <div class="walletBox">
+                <h1>CONNECT TON WALLET</h1>
+    
+                <div id="ton-connect"></div>
+                <!-- <div id="custom-ton-connect" class="tonConnect"><span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" fill="black">
+                      <path d="M14.996 2L2 6.73l13 21.27L28 6.73 14.996 2zm0 3.012l9.323 3.29L15 23.444 5.684 8.3 14.996 5.01z"/>
+                    </svg>
+                  </span>
+                  Connect Wallet</div> -->
+            </div>
+            <br>
+            <div class="infoBox">
+                <h1 id="balance"></h1>
+            </div>
+        </div>
+    
+        <div class="menu">
+            <div id="tasks-btn" class="tasks-btn">
+                <i class="bi bi-ui-checks"></i>
+            </div>
+            <div id="main-btn" class="main-btn">
+                <i class="bi bi-house"></i>
+            </div>
+            <div id="stat-btn" class="stat-btn">
+                <i class="bi bi-bar-chart"></i>
+            </div>
+            <div id="profile-btn" class="profile-btn">
+                <i class="bi bi-wallet2"></i>
+            </div>
         </div>
     </div>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script defer>
+
+    <script>
         const tg = window.Telegram.WebApp;
         tg.ready();
-        tg.expand();
         const user = tg.initDataUnsafe.user;
+
+        const token = ''
+
+        document.getElementById('main-btn').classList.add('one')
+        
+        document.getElementById('profile-btn').addEventListener('click', ()=>{
+            document.getElementById('tasks').style.display = 'none'
+            document.getElementById('main').style.display = 'none'
+            document.getElementById('stat').style.display = 'none'
+            document.getElementById('profile').style.display = 'block'
+            
+            document.getElementById('profile-btn').classList.add('active');
+            document.getElementById('main-btn').classList.remove('active');
+            document.getElementById('main-btn').classList.remove('one')
+            document.getElementById('tasks-btn').classList.remove('active');
+            document.getElementById('stat-btn').classList.remove('active');
+        })
+        
+        document.getElementById('main-btn').addEventListener('click', ()=>{
+            document.getElementById('tasks').style.display = 'none'
+            document.getElementById('main').style.display = 'block'
+            document.getElementById('profile').style.display = 'none'
+            document.getElementById('stat').style.display = 'none'
+            
+            document.getElementById('main-btn').classList.add('active');
+            document.getElementById('profile-btn').classList.remove('active');
+            document.getElementById('tasks-btn').classList.remove('active');
+            document.getElementById('stat-btn').classList.remove('active');
+        })
+        
+        document.getElementById('tasks-btn').addEventListener('click', ()=>{
+            document.getElementById('tasks').style.display = 'block'
+            document.getElementById('main').style.display = 'none'
+            document.getElementById('profile').style.display = 'none'
+            document.getElementById('stat').style.display = 'none'
+            
+            document.getElementById('tasks-btn').classList.add('active');
+            document.getElementById('profile-btn').classList.remove('active');
+            document.getElementById('main-btn').classList.remove('active');
+            document.getElementById('main-btn').classList.remove('one');
+            document.getElementById('stat-btn').classList.remove('active');
+        })
+        document.getElementById('stat-btn').addEventListener('click', ()=>{
+            document.getElementById('tasks').style.display = 'none'
+            document.getElementById('main').style.display = 'none'
+            document.getElementById('profile').style.display = 'none'
+            document.getElementById('stat').style.display = 'block'
+            
+            document.getElementById('tasks-btn').classList.remove('active');
+            document.getElementById('profile-btn').classList.remove('active');
+            document.getElementById('main-btn').classList.remove('active');
+            document.getElementById('main-btn').classList.remove('one');
+            document.getElementById('stat-btn').classList.add('active');
+        })
+
+        let coins = Number(localStorage.getItem('coins'))
+        let h1 = document.getElementById('h1')
+        let count = 0
+        count = Math.floor(coins * 0.8)
+        
+        if(!coins) {
+            localStorage.setItem('coins', 0)
+            document.getElementById('h1').innerText = 0
+        } else {
+            h1.textContent = (coins).toLocaleString('en-US') + ' COINS'
+        }
+
+        async function coinClick() {
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            coins++
+            
+            localStorage.setItem('coins', coins)
+
+            h1.textContent = (coins).toLocaleString('en-US') + ' COINS'
+
+            //effects
+            const coinBox = document.getElementById('coin')
+            const coinEffect = document.createElement('div')
+            coinEffect.classList.add('coinEffect')
+            coinEffect.textContent = `+20`
+
+            const rect = coinBox.getBoundingClientRect();
+            const x = event.x - rect.left;
+            const y = event.y - rect.top;
+
+            coinEffect.style.top = `${y}px`
+            coinEffect.style.left = `${x}px`
+            
+            coinBox.appendChild(coinEffect)
+        
+            setTimeout(()=>{
+                coinEffect.remove()
+            }, 2000)
+        }
+
+        // document.getElementById('coin').addEventListener('touchstart', coinClick)
+        document.getElementById('coin').addEventListener("click", coinClick)
+
+        let interval = null
+
+        function startCount(){
+            
+            setTimeout(()=>{
+                h1.classList.add('active')
+                // document.getElementById('trollface').classList.add('active')
+                document.getElementById('coin').classList.add('active')
+                navigator.vibrate(500)
+    
+                interval = setInterval(()=>{
+                    count++
+                    h1.textContent = count
+                    localStorage.setItem('coins', count)        
+            }, 100)
+            }, 2000)
+        }
+
+        // document.getElementById('coin').addEventListener("touchstart", startCount)
+
+        function stop(){
+            clearInterval(interval)
+            h1.classList.remove('active')
+            // document.getElementById('trollface').classList.remove('active')
+            document.getElementById('coin').classList.remove('active')
+        }
+
+        // document.getElementById('coin').addEventListener("touchend", stop)
+        // document.getElementById('coin').addEventListener("touchcancel", stop)
+        // document.getElementById('coin').addEventListener("touchmove", stop)
+        // document.getElementById('coin').addEventListener("mouseover", stop)
 
         const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://utopialf.github.io/trollcoin/tonconnect-manifest.json',
-            buttonRootId: 'ton-connect'
+            buttonRootId: 'ton-connect',
+            uiPreferences: {
+                borderRadius: 's',
+            }
         });
 
         tonConnectUI.uiOptions = {
             twaReturnUrl: 'https://t.me/trollcoin_test_bot'
         };
 
-        //menu functions
-        document.getElementById('main-btn').addEventListener('click', ()=>{
-            document.getElementById('main').style.display = 'block'
-            document.getElementById('refs').style.display = 'none'
-            document.getElementById('stat').style.display = 'none'
-            document.getElementById('stat').style.pointerEvents = 'none'
-            document.getElementById('info').style.display = 'none'
-        })
-        document.getElementById('stat-btn').addEventListener('click', ()=>{
-            document.getElementById('main').style.display = 'none'
-            document.getElementById('refs').style.display = 'none'
-            document.getElementById('stat').style.display = 'flex'
-            document.getElementById('info').style.display = 'none'
-        })
-        document.getElementById('refs-btn').addEventListener('click', ()=>{
-            document.getElementById('main').style.display = 'none'
-            document.getElementById('refs').style.display = 'flex'
-            document.getElementById('stat').style.display = 'none'
-            document.getElementById('info').style.display = 'none'
-        })
-        document.getElementById('info-btn').addEventListener('click', ()=>{
-            document.getElementById('main').style.display = 'none'
-            document.getElementById('refs').style.display = 'none'
-            document.getElementById('stat').style.display = 'none'
-            document.getElementById('info').style.display = 'flex'
-        })
 
-        let coins = Number(localStorage.getItem('coins'))
-        let h1 = document.getElementById('h1')
-        let count = 0
-        count = Math.floor(coins * 0.90)
-
-        function addCoins(amount) {
-            let start = +h1.textContent.replace(/\D/g, '');
-            let end = start + amount;
-            let startTime = performance.now();
-
-            function update(now) {
-                let progress = Math.min((now - startTime) / 1000, 1); // 1s duration
-                let value = Math.floor(start + (end - start) * progress);
-                h1.textContent = value.toLocaleString('en-US') + ' $TCOIN';
-                if (progress < 1) requestAnimationFrame(update);
-            }
-
-            requestAnimationFrame(update);
-        }
-
-        if(!coins) {
-            localStorage.setItem('coins', 0)
-            document.getElementById('h1').innerText = 0
-        } else {
-            h1.textContent = (coins).toLocaleString('en-US') + ' $TCOIN'
-            document.getElementById('meCoins').textContent = 'Coins: ' + (coins).toLocaleString('en-US')
-        }
+        // const walletAddress = tonConnect.account?.address;
+        // if(walletAddress){
+        //     document.getElementById('balance').textContent = 
+        // }
 
         const transaction = {
             validUntil: Math.floor(Date.now() / 1000) + 60, // expires in 60 sec
@@ -238,21 +382,29 @@
         async function sendTon() {
             try{
                 const result = await tonConnectUI.sendTransaction(transaction);
-                alert('Transaction sent!')
+                Telegram.WebApp.showPopup({
+                    title: 'Success',
+                    message: 'Transaction sent!',
+                    buttons: [
+                        {id: 'ok', type: 'ok', text: 'Done'}
+                    ]
+                })
                 localStorage.setItem('sendTon', 'completed')
                 document.getElementById('sendTonBtn').style.background = '#1E2337'
                 document.getElementById('sendTonBtn').style.color = 'white'
-                document.getElementById('sendTonBtn').innerHTML = 'Completed <i class="bi bi-check-all"></i>'
+                document.getElementById('sendTonBtn').textContent = 'Completed'
 
                 coins += 1000000;
                 localStorage.setItem('coins', coins)
                 h1.textContent = coins
             } catch(error){
-                if(!tonConnectUI.wallet){
-                    alert('Pls, connect your TON wallet.')
-                } else {
-                    alert('Transaction failed')
-                }
+                Telegram.WebApp.showPopup({
+                    title: 'Error',
+                    message: 'Transaction failed',
+                    buttons: [
+                        {id: 'ok', type: 'ok', text: 'OK'}
+                    ]
+                })
             }
         }
 
@@ -265,10 +417,13 @@
 
         document.getElementById('sendTonBtn').addEventListener('click', sendTon)
 
+        // const channels = ['@durov', '@notcoin'];
+
         let followBtn = document.getElementsByClassName('followBtn');
 
         for (let i = 0; i < followBtn.length; i++) {
             followBtn[i].addEventListener('click', ()=>{
+                window.location.href = channels[i]
             })
         }
 
@@ -280,17 +435,28 @@
             let dailyCheckIn = localStorage.getItem(`${day}-${month}-${year}`) || 0;
 
             if(dailyCheckIn == 0) {
-                coins += 500;
+                coins += 5000;
                 localStorage.setItem('coins', coins);
                 localStorage.setItem(`${day}-${month}-${year}`, 'yes');
-                h1.textContent = coins.toLocaleString('en-US') + ` $TCOIN`;
+                h1.textContent = coins.toLocaleString('en-US');
 
                 document.getElementById('claim').style.background = '#1E2337'
                 document.getElementById('claim').style.color = 'white'
-                document.getElementById('claim').innerHTML = 'Completed <i class="bi bi-check-all"></i>'
+                document.getElementById('claim').textContent = 'Completed'
                 document.getElementById('claim').disabled = true;
+
+                fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${user.id}&text=You’ve received 5k coins! Enjoy your rewards!`)
+                .then(response => response.json())
+                .then(data => console.log('Message sent successfully'))
+                .catch(err => console.error("Some error" + err))
             } else {
-                alert('You have already claimed your reward. Come back tomorrow!')
+                Telegram.WebApp.showPopup({
+                    title: 'Error',
+                    message: 'You have already claimed your reward. Come back tomorrow!',
+                    buttons: [
+                        {id: 'ok', type: 'ok', text: 'OK'}
+                    ]
+                })
             }
         })
 
@@ -311,55 +477,130 @@
             });
         }
 
-        function updateLevel(){
-            if(coins < 100){
+        if(coins < 100){
             document.getElementById('level').textContent = 'Level: Brokie'
-            } else if(coins > 100 && coins < 500){
-                document.getElementById('level').textContent = 'Level: Newbie'
-            } else if(coins > 500 && coins < 1000){
-                document.getElementById('level').textContent = 'Level: Player'
-            } else if(coins > 1000 && coins < 10000){
-                document.getElementById('level').textContent = 'Level: Master'
-            } else if(coins > 10000){
-                document.getElementById('level').textContent = 'Level: King'
-            }
-        }
-        updateLevel()
-
-        let giftDaily = document.getElementById('gift')
-        let claim1kBtn = document.getElementById('claim1k')
-
-        let dayCount = localStorage.getItem('dayCount') || 1;
-        let lastClaimed = localStorage.getItem('lastClaimed');
-        let todayIs = new Date().toDateString();
-        console.log(todayIs);
-
-        if(lastClaimed !== todayIs){
-            giftDaily.classList.add('active');
-            document.getElementById('dayCount').textContent = `Day ${dayCount}`
-            let todayCoins = (dayCount * 1000);
-            claim1kBtn.textContent = `CLAIM +${todayCoins.toLocaleString('en-US')}`
+        } else if(coins > 100 && coins < 500){
+            document.getElementById('level').textContent = 'Level: Newbie'
+        } else if(coins > 500 && coins < 1000){
+            document.getElementById('level').textContent = 'Level: Player'
+        } else if(coins > 1000 && coins < 10000){
+            document.getElementById('level').textContent = 'Level: Master'
+        } else if(coins > 10000){
+            document.getElementById('level').textContent = 'Level: King'
         }
 
-        document.getElementById('toDay').textContent = `Day: ${dayCount}`
-        
-        claim1kBtn.addEventListener('click', ()=>{
-            let todayCoins = (dayCount * 1000);
-            coins += todayCoins;
-            console.log(todayCoins);
-            
-            localStorage.setItem('coins', coins);
-            dayCount++
-            localStorage.setItem('dayCount', dayCount)
-            localStorage.setItem('lastClaimed', todayIs);
-            
-            giftDaily.classList.remove('active');
-            updateLevel()
-            addCoins(todayCoins)
+        document.getElementById('settingBtn').addEventListener('click', ()=>{
+            document.getElementById('setting').classList.toggle('active')
+        })
+        document.getElementById('refBtn').addEventListener('click', ()=>{
+            document.getElementById('refBox').classList.add('active')
+        })
+        document.getElementById('okref').addEventListener('click', ()=>{
+            document.getElementById('refBox').classList.remove('active')
         })
 
-        document.getElementById('myName').textContent = user.first_name;
-        document.getElementById('myRefLink').textContent = `https://t.me/trollcoin_test_bot?start=${user.id}`
+        let coinSkin1 = document.getElementById('skin1');
+        let coinSkin2 = document.getElementById('skin2');
+        let coinSkin3 = document.getElementById('skin3');
+
+        const notcoinSkin = localStorage.getItem('notcoinSkin') || 0;
+        if(notcoinSkin == 0){
+            document.getElementById('skin1').classList.add('not_allowed')
+        } else {
+            document.getElementById('buySkin').style.display = 'none'
+            document.getElementById('skin1').classList.remove('not_allowed')
+        }
+
+        coinSkin1.addEventListener('click', ()=>{
+            if(notcoinSkin == 'allowed'){
+                localStorage.setItem('coinSkin', 'skin1');
+                document.getElementById('coin').classList.add('skin1');
+                document.getElementById('coin').classList.remove('skin2');
+                document.getElementById('coin').classList.remove('skin3');
+                coinSkin1.classList.add('selected');
+                coinSkin2.classList.remove('selected');
+                coinSkin3.classList.remove('selected');
+    
+                document.getElementById('tapMe').style.display = 'none'
+            }
+        })
+
+        async function sendTonForSkin1() {
+            try{
+                const result = await tonConnectUI.sendTransaction(transaction);
+                Telegram.WebApp.showPopup({
+                    title: 'Success',
+                    message: 'You bought a new skin! Pls refresh the mini-app',
+                    buttons: [
+                        {id: 'ok', type: 'ok', text: 'Done'}
+                    ]
+                })
+                localStorage.setItem('notcoinSkin', 'allowed');
+                document.getElementById('buySkin').style.display = 'none'
+                document.getElementById('skin1').classList.remove('not_allowed')
+            } catch(error){
+                Telegram.WebApp.showPopup({
+                    title: 'Error',
+                    message: 'Transaction failed',
+                    buttons: [
+                        {id: 'ok', type: 'ok', text: 'OK'}
+                    ]
+                })
+            }
+        }
+
+        //buy notcoin skin
+        document.getElementById('buySkin').addEventListener('click', sendTonForSkin1);
+
+        coinSkin2.addEventListener('click', ()=>{
+            localStorage.setItem('coinSkin', 'skin2');
+            document.getElementById('coin').classList.add('skin2');
+            document.getElementById('coin').classList.remove('skin1');
+            document.getElementById('coin').classList.remove('skin3');
+            coinSkin1.classList.remove('selected');
+            coinSkin2.classList.add('selected');
+            coinSkin3.classList.remove('selected');
+            document.getElementById('tapMe').style.display = 'none'
+        })
+        coinSkin3.addEventListener('click', ()=>{
+            localStorage.setItem('coinSkin', 'skin3');
+            document.getElementById('coin').classList.add('skin3');
+            document.getElementById('coin').classList.remove('skin1');
+            document.getElementById('coin').classList.remove('skin2');
+            coinSkin1.classList.remove('selected');
+            coinSkin2.classList.remove('selected');
+            coinSkin3.classList.add('selected');
+            document.getElementById('tapMe').style.display = 'none'
+        })
+
+        if(localStorage.getItem('coinSkin') == 'skin1') {
+            document.getElementById('coin').classList.add('skin1');
+            document.getElementById('coin').classList.remove('skin2');
+            document.getElementById('coin').classList.remove('skin3');
+            coinSkin1.classList.add('selected');
+            coinSkin2.classList.remove('selected');
+            coinSkin3.classList.remove('selected');
+
+            document.getElementById('tapMe').style.display = 'none'
+        } else if(localStorage.getItem('coinSkin') == 'skin2'){
+            document.getElementById('coin').classList.add('skin2');
+            document.getElementById('coin').classList.remove('skin1');
+            document.getElementById('coin').classList.remove('skin3');
+            coinSkin1.classList.remove('selected');
+            coinSkin2.classList.add('selected');
+            coinSkin3.classList.remove('selected');
+            document.getElementById('tapMe').style.display = 'none'
+        } else if(localStorage.getItem('coinSkin') == 'skin3') {
+            document.getElementById('coin').classList.add('skin3');
+            document.getElementById('coin').classList.remove('skin1');
+            document.getElementById('coin').classList.remove('skin2');
+            coinSkin1.classList.remove('selected');
+            coinSkin2.classList.remove('selected');
+            coinSkin3.classList.add('selected');
+            document.getElementById('tapMe').style.display = 'none'
+        }
+
+        document.getElementById('refLink').textContent = `https://t.me/trollcoin_test_bot?start=${user.id}`
     </script>
 </body>
 </html>
