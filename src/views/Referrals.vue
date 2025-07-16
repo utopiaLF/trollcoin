@@ -1,6 +1,6 @@
 <template>
     <div class="refs" id="refs">
-        <h2 style="text-align:center;" id="myRefLink">{{ userId }}</h2>
+        <h2 style="text-align:center;" id="myRefLink">https://t.me/trollcoin_test_bot?start={{ userId }}</h2>
 
         <h3 style="margin-top: 30px;font-family: 'Poppins', sans-serif;font-weight: 500;">Rewards? In this economy?</h3>
 

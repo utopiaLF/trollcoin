@@ -56,10 +56,10 @@ export default {
     methods: {
         async sendTon() {
             const transaction = {
-                validUntil: Math.floor(Date.now() / 1000) + 60, // expires in 60 sec
+                validUntil: Math.floor(Date.now() / 1000) + 60,
                 messages: [
                     {
-                    address: "UQDTtBHATFoDgXj1ZG0iQtf7M9kuAxcGlVmUIzowq1Goz8PD", // Replace with your real wallet
+                    address: "UQDTtBHATFoDgXj1ZG0iQtf7M9kuAxcGlVmUIzowq1Goz8PD",
                     amount: "50000000"
                     },
                 ],

@@ -41,6 +41,14 @@ body{
     flex-direction: column;
     font-family: "Poppins", sans-serif;
     color: #1E2337;
+    opacity: 0.7;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}
+.menu a.active{
+    opacity: 1;
+    background-color: #2121214a;
 }
 .menu div i{
     font-size: 1rem;
@@ -53,6 +61,9 @@ body{
     width: 100%;
     height: max-content;
     background: linear-gradient(to top, #1ABC9C, #8E44AD);
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 .home .myCoins{
     width: 100%;
@@ -175,6 +186,7 @@ body{
 }
 .taskBox .task button.claimed{
     background: #1a1a1a88;
+    pointer-events: none;
 }
 .taskContext{
     margin-bottom: 30px;
