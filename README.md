@@ -1,5 +1,38 @@
-# Vue 3 + Vite
+# Trollcoin
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A light and fun Telegram mini app to collect coins — inspired by Notcoin.  
+Built with Vue and focused on a smooth tapping experience — fully responsive on mobile.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+---
+
+## Demo
+
+[https://t.me/trollcoin_test_bot](https://t.me/trollcoin_test_bot)
+
+---
+
+## Tech
+
+- Vue 3 + Vite  
+- Telegram WebApp SDK  
+- Minimalistic UI & playful UX  
+- Fully responsive (mobile-first)
+
+---
+
+## About
+
+Trollcoin is a mini side project made for fun.  
+No backend, no blockchain — just a simple and joyful tapping experience inside Telegram.
+
+---
+
+## Status
+
+This is a small prototype built for experimentation.  
+May grow in the future — or may stay fun and silly forever :)
+
+---
+
+Made with ❤️ by [@utopiaLF](https://github.com/utopiaLF)
+
